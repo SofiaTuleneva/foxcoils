@@ -1,0 +1,115 @@
+@import "mixins.less";
+@import "variables.less";
+@import "fonts.less";
+
+// *** убираем нижний отступ у картинок
+img {
+	display: block;
+	line-height: 0;
+}
+
+.rs-body {
+	background: @body-bg;
+	font-family: @base-font-family;
+	font-size: @base-font-size;
+	line-height: @base-line-height;
+}
+
+.rs-link {
+	color: @base-link-color;
+	text-decoration: none;
+
+	&:hover {
+		.hover();
+	}
+}
+
+//.rs-container {
+//	max-width: @screen;
+//	margin: 0 auto;
+//}
+
+.rs-text-input {
+	border: 1px solid @border-color;
+	padding: 9px;
+}
+
+.rs-btn {
+	border: none;
+	background: #000;
+	color: #fff;
+	text-transform: uppercase;
+	font-family: @base-ttl-font-family;
+	cursor: pointer;
+	padding: 0 85px;
+	height: 50px;
+	line-height: 50px;
+	white-space: nowrap;
+}
+
+.rs-btn_white {
+	background: #fff;
+	color: #000;
+}
+
+
+// *** titles
+
+.rs-ttl {
+	font-family: @base-ttl-font-family;
+	text-transform: uppercase;
+	line-height: 1.15;
+}
+
+.rs-ttl_small {
+	font-size: 35px;
+}
+
+.rs-ttl_middle {
+	font-size: 45px;
+}
+
+.rs-ttl_large {
+	font-size: 55px;
+}
+
+.rs-ttl_xxl {
+	font-size: 115.45px;
+}
+
+.rs-ttl_white-shadow {
+	color: #fff;
+	font-size: 115.45px;
+	text-shadow: 0 8px 13px rgba(0, 0, 0, 0.18);
+
+	.rs-ttl__inner {
+		display: inline-block;
+		position: relative;
+		margin-bottom: 1em;
+
+		&:after {
+			background: #fff none repeat scroll 0 0;
+			bottom: -21px;
+			content: "";
+			display: block;
+			height: 15px;
+			left: 8px;
+			position: absolute;
+			width: 157px;
+		}
+	}
+}
+
+.rs-ttl_centered {
+	text-align: center;
+}
+
+// page
+
+.rs-page {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	max-width: @screen;
+}
+.rs-page-item {}

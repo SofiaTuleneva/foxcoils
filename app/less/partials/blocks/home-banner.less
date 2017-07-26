@@ -1,0 +1,30 @@
+@import "../common.less";
+
+
+.rs-home-banner {
+	position: relative;
+}
+
+.rs-home-banner-text {
+	display: flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.rs-home-banner-text__inner {
+	margin: auto;
+	padding: 0 @home-block-padding;
+}
+
+.rs-home-banner__img {
+	width: 100%;
+}
+
+@media screen and (max-width: @mobile) {
+	.rs-home-banner-text__inner {
+		padding: 0 @home-block-padding-mobile;
+	}
+}
