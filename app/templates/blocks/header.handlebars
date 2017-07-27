@@ -1,13 +1,35 @@
-<div class="rs-header">
-    <div class="rs-header__topbar">
-	    <div class="rs-header__topbar-inner">
-		    <div class="rs-header__logo">
-			    {{>logo}}
-		    </div>
-		    <div class="rs-header__menu">
-			    <a href="" class="rs-header__menu-icon"><img src="images/header__menu-icon.png"></a>
-			    {{>menu}}
-		    </div>
-	    </div>
-    </div>
-</div>
+<header>
+	<div class="rs-header">
+		
+		<div class="rs-header__topbar">
+			<div class="container">
+				<div class="rs-header__top-links hidden-xs nav pull-left text-center">
+					<a href="/">Оптовикам</a>
+					<a href="/">Доставка и оплата</a>
+					<a href="/">Гарантия и сервис</a>
+					<a href="/">Связаться с нами</a>
+				</div>
+				<div class="top-links nav pull-right ">
+					right block
+				</div>
+			</div>
+		</div>
+		
+		<div class="rs-header__middlebar">
+			<div class="container">
+				<div class="rs-header__logo">
+					{{>logo}}
+				</div>
+			</div>
+		</div>
+		
+		<div class="rs-header__bottombar">
+			<div class="container">
+				<div class="rs-header__catalog-nav">
+					{{>catalog-nav}}
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+

@@ -1,25 +1,22 @@
+@import "normalize.less";
 @import "mixins.less";
 @import "variables.less";
 @import "fonts.less";
 
 .rs-body {
-	background: @body-bg;
 	font-family: @base-font-family;
 	font-size: @base-font-size;
-	line-height: @base-line-height;
 }
 
-.rs-link {
-	color: @base-link-color;
+a {
 	text-decoration: none;
 
 	&:hover {
-		.hover();
+		color: #dd4b39;
 	}
 }
 
 .rs-text-input {
-	border: 1px solid @border-color;
 	padding: 9px;
 }
 
@@ -28,7 +25,6 @@
 	background: #000;
 	color: #fff;
 	text-transform: uppercase;
-	font-family: @base-ttl-font-family;
 	cursor: pointer;
 	padding: 0 85px;
 	height: 50px;
@@ -45,7 +41,6 @@
 // *** titles
 
 .rs-ttl {
-	font-family: @base-ttl-font-family;
 	text-transform: uppercase;
 	line-height: 1.15;
 }
@@ -92,13 +87,3 @@
 .rs-ttl_centered {
 	text-align: center;
 }
-
-// page
-
-.rs-page {
-	display: flex;
-	flex-direction: column;
-	margin: 0 auto;
-	max-width: @screen;
-}
-.rs-page-item {}

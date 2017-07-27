@@ -57,7 +57,7 @@ gulp.task('server', () => {
  * Build task
  ******************************/
 
-gulp.task('build', ['handlebars', 'less', 'scripts', 'plugins', 'images', 'fonts']);
+gulp.task('build', ['handlebars', 'less', 'scripts', 'jsBowerPlugins', 'images', 'fonts']);
 
 /******************************
  * Handlebars build
@@ -125,11 +125,11 @@ Efficiency: ${efficiency}%
 /******************************
  * JS plugins build
  ******************************/
-gulp.task('plugins', () => {
+gulp.task('jsBowerPlugins', () => {
 	return gulp.src(bowerFiles)
 		.pipe(sourcemaps.init())
-		.pipe(concat('plugins.min.js'))
-		.pipe(uglify())
+		.pipe(concat('bower.plugins.js'))
+		// .pipe(uglify())
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(params.out + '/js'))
 });
@@ -141,10 +141,10 @@ gulp.task('scripts', () => {
 	return gulp.src(params.scripts)
 		.pipe(sourcemaps.init())
 		.pipe(uglify())
-		.pipe(order([
-            "owl.carousel.js",
-            "owl-carousel-init.js"
-        ]))
+        // .pipe(order([
+        //     "owl.carousel.js",
+        //     "owl-carousel-init.js"
+        // ]))
 		.pipe(concat('app.min.js'))
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(params.out + '/js'));

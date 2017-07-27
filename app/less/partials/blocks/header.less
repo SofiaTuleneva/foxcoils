@@ -1,35 +1,46 @@
 @import "../common.less";
 
 .rs-header {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	z-index: 1;
-	background: orangered;
+
 }
 
 .rs-header__topbar {
-	margin: 0 auto;
-	max-width: @screen;
+	border-bottom: 1px solid #eeeeee;
+	line-height: 36px;
+	position: relative;
+}
+
+.rs-header__top-links a {
+	color: #333;
+	display: inline-block;
+	font-size: 14px;
+	line-height: 36px;
+	padding: 0 10px;
+	text-decoration: none;
+	transition: all 100ms linear 0s;
+
+	&:hover {
+		color: #dd4b39;
+	}
+}
+
+.rs-header__middlebar {
+	background: papayawhip;
+}
+
+.rs-header__bottombar {
+	background: cornsilk;
 }
 
 .rs-header__logo {
-	float: left;
 }
 
-.rs-header__menu {
-	float: right;
+.rs-header__catalog-nav {
 }
 
-.rs-header__menu-icon {
-	float: right;
+.rs-header__catalog-nav-icon {
 
 	&:hover {
 		.hover();
 	}
-}
-
-@media screen and (max-width: @mobile) {
-
 }
