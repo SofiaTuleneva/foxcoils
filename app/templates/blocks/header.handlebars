@@ -1,33 +1,170 @@
 <header>
-	<div class="rs-header">
+	<div class="fc-header">
 		
-		<div class="rs-header__topbar">
+		<div class="fc-header__topbar">
 			<div class="container">
-				<div class="rs-header__top-links hidden-xs nav pull-left text-center">
+				<div class="fc-header__top-links hidden-xs nav pull-left text-center">
 					<a href="/">Оптовикам</a>
 					<a href="/">Доставка и оплата</a>
 					<a href="/">Гарантия и сервис</a>
 					<a href="/">Связаться с нами</a>
 				</div>
-				<div class="top-links nav pull-right ">
-					right block
-				</div>
+				<div class="top-links nav pull-right "></div>
 			</div>
 		</div>
 		
-		<div class="rs-header__middlebar">
+		<div class="fc-header__middlebar">
 			<div class="container">
-				<div class="rs-header__logo">
-					{{>logo}}
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="fc-header__logo">
+							{{>logo}}
+						</div>
+					</div>
+
+
+					<div class="hidden-xs hidden-sm bigsearch col-xs-12 col-sm-6 col-md-6">
+						<div class="search input-group">
+							<input name="search" value="" placeholder="Поиск товара по каталогу" class="form-control input-lg" autocomplete="off" type="text">
+							<ul class="dropdown-menu"></ul>
+							<input class="selected_category" name="category_id" value="0" type="hidden"><span class="input-group-btn"><button type="button" class="search-button btn btn-default btn-lg search_button"><i class="fa fa-search"></i></button></span>
+						</div>
+					</div>
+					
+					
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="header_conts t-ar">
+							<div class="tel">
+								<div class="header_phone_number">
+									<button type="button" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+										<span class="s22"><span class="telefon">+7 (800)</span> 123-23-66
+						                <i class="fa fa-chevron-down"></i>
+						                </span>
+									</button>
+									<ul class="dropdown-menu dropdown-menu-right dop_contss fc-dropdown-menu">
+										<li><a href="contact-us"><span><i class="fa fa fa-map-marker" aria-hidden="true"></i><span>г. Ростов-на-Дону, Сходненская 56</span></span></a>
+										</li>
+										<li><a href="Mailto:info@coilslab.ru"><span><i class="fa fa fa-envelope" aria-hidden="true"></i><span>info@testtest.ru</span></span></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="hidden-md hidden-lg mobsearch col-xs-12 col-sm-12">
+						<div class="search input-group">
+							<input name="search" value="" placeholder="Поиск товара по каталогу" class="form-control input-lg" autocomplete="off" type="text">
+							<ul class="dropdown-menu"></ul>
+							<input class="selected_category" name="category_id" value="0" type="hidden"><span class="input-group-btn"><button type="button" class="search-button btn btn-default btn-lg search_button"><i class="fa fa-search"></i></button></span>
+						</div>
+					</div>
+					
+					
 				</div>
+	
 			</div>
 		</div>
 		
-		<div class="rs-header__bottombar">
+		<div class="fc-header__bottombar">
 			<div class="container">
-				<div class="rs-header__catalog-nav">
-					{{>catalog-nav}}
+				<div class="row">
+					<div class="col-xs-6 col-md-3">
+						
+						<div id="menu2_button">
+							<button type="button" class="box-heading dropdown-toggle fc-dropdown-hover hidden-xs hidden-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class="fa fa-bars"></i>Каталог<span class="hidden-xs"> товаров</span>
+								<span class="icorightmenu"><i class="fa fa-chevron-down"></i></span>
+							</button>
+							
+							
+							<div class="box-heading hidden-md hidden-lg dropdown-toggle" data-toggle="dropdown">
+								<i class="fa fa-bars"></i>Каталог<span class="hidden-xs"> товаров</span>
+								<span class="icorightmenu"><i class="fa fa-chevron-down"></i></span>
+							</div>
+							
+							
+							<div class="box-content dropdown-menu fc-dropdown-menu">
+								<div id="menu2">
+									<ul class="catalog_list catalog_list_popup catalog_as_popup">
+										<li class="revlevel_1 hasChildren closed" style="position: relative;">
+											<div class="title"><a href="https://coilslab.ru/gotovie-namotki-dlya-platy/"><i class="am_category_icon fa fa-angle-right"></i>Для платы</a>
+											</div>
+										</li>
+										<li class="revlevel_1 hasChildren closed" style="position: relative;">
+											<div class="title"><a href="https://coilslab.ru/gotovie-namotki-dlya-platy-s-termokontrolem/"><i class="am_category_icon fa fa-angle-right"></i>Для платы c термоконтролем</a>
+											</div>
+										</li>
+										<li class="revlevel_1 hasChildren closed" style="position: relative;">
+											<div class="title"><a href="https://coilslab.ru/gotovie-namotki-dlya-mexmoda/"><i class="am_category_icon fa fa-angle-right"></i>Для синглмеха</a>
+											</div>
+										</li>
+										<li class="revlevel_1 hasChildren closed" style="position: relative;">
+											<div class="title"><a href="https://coilslab.ru/gotovie-namotki-highvolt/"><i class="am_category_icon fa fa-angle-right"></i>Для последовательного меха</a>
+											</div>
+										</li>
+										<li class="revlevel_1 hasChildren closed" style="position: relative;">
+											<div class="title"><a href="https://coilslab.ru/accessories/"><i class="am_category_icon fa fa-angle-right"></i>Аксессуары для вейпинга</a>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							
+							
+							
+							
+							
+							
+							
+						</div>
+					</div>
+
+	
+					
+					<div class="top-links nav razmivcont hidden-xs hidden-sm col-md-6">
+						<ul class="list-inline">
+							<li><a href="latest"><i class="hidden-md fa fa-bullhorn"></i>Новинки</a>
+							</li>
+							<li><a href="best"><i class="hidden-md fa fa-star"></i>Хиты продаж</a>
+							</li>
+							<li><a href="specials"><i class="hidden-md fa fa-certificate"></i>Акции</a>
+							</li>
+							<li><a href="news"><i class="hidden-md fa fa-newspaper-o"></i>Новости</a>
+							</li>
+							<li><a href="otzivy"><i class="hidden-md fa fa-check"></i>Отзывы</a>
+							</li>
+						</ul>
+					</div>
+
+
+
+
+					<div class="razmivcont col-xs-6 col-md-3">
+						<div id="cart" class="btn-group show-on-hover">
+							<button type="button" class="cart dropdown-toggle fc-dropdown-hover hidden-xs hidden-sm" data-toggle="dropdown">
+								<span id="cart-total"><i class="fa fa-shopping-basket"></i><span class="hidden-xs">Корзина<span class="hidden-md"> покупок</span></span>: 0</span><span class="icorightmenu"><i class="fa fa-chevron-down"></i></span>
+							</button>
+							<button class="cart dropdown-toggle hidden-md hidden-lg" data-toggle="dropdown">
+								<span id="cart-total-popup"><i class="fa fa-shopping-basket"></i><span class="hidden-xs">Корзина<span class="hidden-md"> покупок</span></span>: 0</span>
+							</button>
+							<ul class="dropdown-menu fc-dropdown-menu pull-right">
+								<li>
+									<p class="text-center">В корзине пусто!</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+
+
+
+					
+
+
 				</div>
+				
 			</div>
 		</div>
 	</div>

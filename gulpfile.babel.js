@@ -57,7 +57,7 @@ gulp.task('server', () => {
  * Build task
  ******************************/
 
-gulp.task('build', ['handlebars', 'less', 'scripts', 'jsBowerPlugins', 'images', 'fonts']);
+gulp.task('build', ['handlebars', 'less', 'scripts', 'images', 'fonts']);
 
 /******************************
  * Handlebars build
@@ -122,17 +122,17 @@ Efficiency: ${efficiency}%
 		.pipe(reload({stream: true}));
 });
 
-/******************************
- * JS plugins build
- ******************************/
-gulp.task('jsBowerPlugins', () => {
-	return gulp.src(bowerFiles)
-		.pipe(sourcemaps.init())
-		.pipe(concat('bower.plugins.js'))
-		// .pipe(uglify())
-		.pipe(sourcemaps.write())
-		.pipe(gulp.dest(params.out + '/js'))
-});
+// /******************************
+//  * JS plugins build
+//  ******************************/
+// gulp.task('jsBowerPlugins', () => {
+// 	return gulp.src(bowerFiles)
+// 		.pipe(sourcemaps.init())
+// 		.pipe(concat('bower.plugins.js'))
+// 		// .pipe(uglify())
+// 		.pipe(sourcemaps.write())
+// 		.pipe(gulp.dest(params.out + '/js'));
+// });
 
 /******************************
  * JS build
@@ -141,10 +141,11 @@ gulp.task('scripts', () => {
 	return gulp.src(params.scripts)
 		.pipe(sourcemaps.init())
 		.pipe(uglify())
-        // .pipe(order([
-        //     "owl.carousel.js",
-        //     "owl-carousel-init.js"
-        // ]))
+		.pipe(order([
+            "jquery.min.js",
+            "bootstrap.min.js",
+            "*.js"
+		]))
 		.pipe(concat('app.min.js'))
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(params.out + '/js'));

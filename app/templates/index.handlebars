@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>FoxCoils</title>
-
     <link rel="stylesheet" href="css/app.min.css" type="text/css" />
-
-    <script type="text/javascript" src="js/bower.plugins.js"></script>
     <script type="text/javascript" src="js/app.min.js"></script>
 </head>
 
-<body class="rs-body">
-
+<body class="fc-body">
 
 	{{>header}}
+	{{>catalog}}
+	{{>footer}}
+
+<script>
+	$('.fc-dropdown-hover').bootstrapDropdownHover();
+</script>
 	
 
 </body>
