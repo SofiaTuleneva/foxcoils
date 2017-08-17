@@ -95,8 +95,66 @@ label {
 	font-size: 14px;
 	font-weight: normal;
 }
-
-
+.breadcrumb {
+	background-color: transparent;
+	border-bottom: 1px solid #adadad;
+	padding-bottom: 10px;
+	margin: 0;
+	padding: 0;
+	margin-bottom: 20px;
+	border-radius: 0;
+	overflow: hidden;
+}
+.breadcrumb i {
+	font-size: 16px;
+}
+.breadcrumb > li {
+	padding: 0;
+	position: relative;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.breadcrumb>li.br_ellipses+li:before {
+	content: "";
+	padding: 0;
+}
+.breadcrumb > *:nth-child(n+1) {
+	display: inline;
+}
+.invisible{
+	display: none;
+}
+@media (max-width: 767px) {
+	.breadcrumb  > *:nth-last-child(-n+2) {
+		display: inline;
+	}
+	.breadcrumb > * {
+		max-width: 60px;
+		font-size: 13px;
+	}
+	h1.inbreadcrumb {
+		font-size: 15px;
+	}
+}
+@media (min-width: 768px) and (max-width:991px) {
+	.breadcrumb  > *:nth-last-child(-n+4) {
+		display: inline;
+	}
+	.breadcrumb  > * {
+		max-width: 100px;
+	}
+}
+@media (min-width: 992px) {
+	.breadcrumb  > *:nth-last-child(-n+6) {
+		display:inline;
+	}
+	.breadcrumb  > * {
+		max-width: 170px;
+	}
+}
+.pagpages {
+	margin: 10px 0;
+}
 .icorightmenu {
 	float: right;
 	font-size: 9px;
