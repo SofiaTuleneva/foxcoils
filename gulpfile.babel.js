@@ -140,7 +140,7 @@ Efficiency: ${efficiency}%
 gulp.task('scripts', () => {
 	return gulp.src(params.scripts)
 		.pipe(sourcemaps.init())
-		.pipe(uglify())
+		// .pipe(uglify())
 		.pipe(order([
             "jquery.min.js",
             "bootstrap.min.js",

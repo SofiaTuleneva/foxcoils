@@ -1,0 +1,44 @@
+<script>
+	$(document).ready(function() {
+		
+		// header menu dropdowns
+
+		$('.fc-dropdown-hover').bootstrapDropdownHover();
+		
+		// product page gallery
+		
+		$('.thumbnails .images-additional').magnificPopup({
+			type:'image',
+			delegate: 'a',
+			gallery: {
+				enabled:true
+			},
+			callbacks: {
+				open: function() {
+					$('body').addClass('razmiv2');
+					$('#pagefader2').fadeIn(70);
+					if (document.body.scrollHeight > document.body.offsetHeight) {
+						$('#top3').css('right', '8.5px');
+					}
+				},
+				close: function() {
+					$('body').removeClass('razmiv2');
+					$('#pagefader2').fadeOut(70);
+					$('#top3').css('right', 'initial');
+				}
+			}
+		});
+		
+		$('.thumbnails .main-image img').click(function(){
+			if ($('.images-additional').length > 0) {
+				var startnumber = $(this).parent().attr('data-number');
+				$('.images-additional').magnificPopup('open', startnumber);
+				return false
+			} else {
+				$(this).magnificPopup('open');
+				return false
+			}
+		});
+	});
+</script>
+
