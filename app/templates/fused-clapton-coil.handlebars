@@ -14,13 +14,9 @@
 <section class="main-content">
 	<div class="container">
 
-		<ul class="breadcrumb">
-			<li>
-				<a href="/">Главная</a>
-			</li>
-			<li>
-				<h1 class="inbreadcrumb" itemprop="name">Fused Clapton Coil</h1>
-			</li>
+		<ul class="B_crumbBox"><li class="B_firstCrumb" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a class="B_homeCrumb" itemprop="url" rel="Home" href="http://foxcoils.ru/"><span itemprop="title">Home</span></a></li>
+			<li itemscope="itemscope" class="B_crumb" itemtype="http://data-vocabulary.org/Breadcrumb"><a class="B_crumb" itemprop="url" rel="Каталог" href="catalog/"><span itemprop="title">Каталог</span></a></li>
+			<li class="B_lastCrumb" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"></li><li itemscope="itemscope" class="B_currentCrumb" itemtype="http://data-vocabulary.org/Breadcrumb">Fused Clapton Coil SS</li>
 		</ul>
 
 		<div class="row">
@@ -174,6 +170,75 @@
 									<button type="button" id="button-cart" onclick="get_revpopup_cart(50,'product',get_revpopup_cart_quantity('50'));" data-loading-text="Загрузка..." class="btn btn-primary btn-lg"><i class="fa fa-shopping-basket"></i>В корзину</button>
 								</div>
 							</div>
+
+
+
+
+
+
+							<script>
+								$( function() {
+									var spinner = $( "#spinner" ).spinner({
+										min: 1,
+										max: 1000,
+										numberFormat: "n",
+										classes: {
+											"ui-spinner": "ui-spinner-product-qty",
+											"ui-spinner-down": "ui-spinner-down-product-qty",
+											"ui-spinner-up": "ui-spinner-up-product-qty"
+										}
+									});
+									spinner.spinner( "value", 1 );
+
+									$( "#disable" ).on( "click", function() {
+										if ( spinner.spinner( "option", "disabled" ) ) {
+											spinner.spinner( "enable" );
+										} else {
+											spinner.spinner( "disable" );
+										}
+									});
+									$( "#destroy" ).on( "click", function() {
+										if ( spinner.spinner( "instance" ) ) {
+											spinner.spinner( "destroy" );
+										} else {
+											spinner.spinner();
+										}
+									});
+									$( "#getvalue" ).on( "click", function() {
+										alert( spinner.spinner( "value" ) );
+									});
+									$( "#setvalue" ).on( "click", function() {
+										spinner.spinner( "value", 5 );
+									});
+
+									$( "button" ).button();
+								} );
+							</script>
+
+							<p>
+								<label for="spinner">Количество:</label>
+								<input id="spinner" name="value">
+							</p>
+
+							<p>
+								<button id="disable">Toggle disable/enable</button>
+								<button id="destroy">Toggle widget</button>
+							</p>
+
+							<p>
+								<button id="getvalue">Get value</button>
+								<button id="setvalue">Set value to 5</button>
+							</p>
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
 						</div>
 					</div>
 

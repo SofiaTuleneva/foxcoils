@@ -207,6 +207,49 @@ label {
 .breadcrumb > *:nth-child(n+1) {
 	display: inline;
 }
+.B_crumbBox {
+	margin-bottom: 20px;
+	list-style: none;
+	background-color: #f5f5f5;
+	border-radius: 4px;
+	background-color: transparent;
+	border-bottom: 1px solid #adadad;
+	margin: 0;
+	padding: 10px 0;
+	margin-bottom: 20px;
+	border-radius: 0;
+	overflow: hidden;
+}
+.B_crumbBox i {
+	font-size: 16px;
+}
+.B_crumbBox > li {
+	padding: 0;
+	position: relative;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.B_crumbBox > li.br_ellipses+li:before {
+	content: "";
+	padding: 0;
+}
+.B_crumbBox > *:nth-child(n+1) {
+	display: inline;
+}
+.B_crumbBox > li + li::before {
+	padding: 0 5px;
+	color: #ccc;
+	content: "/\00a0";
+}
+.B_currentCrumb {
+	font-size: 17px;
+	font-weight: 400;
+}
+.B_crumbBox > li.B_currentCrumb::before {
+	display: none;
+	content: '';
+}
+
 .invisible{
 	display: none;
 }
@@ -252,10 +295,6 @@ label {
 	padding-right: 0;
 }
 
-.fc-header {
-
-}
-
 .fc-header__topbar {
 	border-bottom: 1px solid #eeeeee;
 	line-height: 36px;
@@ -288,7 +327,7 @@ label {
 }
 
 .fc-header__bottombar {
-	background: #28425c;
+	background: #49545e;
 }
 
 .rs-ttl_centered {
@@ -381,7 +420,7 @@ label {
 			padding: 0;
 
 			.s22 {
-				color: #009999;
+				color: #778899;
 				display: block;
 				font-size: 21px;
 				font-weight: bold;
@@ -818,7 +857,7 @@ html.common-home #menu2_button.inhome:hover {
 	border: none;
 	text-align: left;
 
-	background-color: #009999;
+	background-color: lightslategray;
 	color: #FFF;
 	height: 40px;
 	line-height: 40px;
