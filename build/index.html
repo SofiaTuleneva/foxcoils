@@ -15,8 +15,8 @@
 			<div class="fc-header__topbar">
 				<div class="container">
 					<div class="fc-header__top-links nav pull-left text-center">
+						<a href="/catalog">Каталог</a>
 						<a href="/contacts.html">Контакты</a>
-						<a href="/">Доставка и оплата</a>
 					</div>
 					<div class="top-links nav pull-right "></div>
 				</div>
@@ -42,31 +42,18 @@
 	
 							<div class="rs-header-ttl">
 								<div><span class="h3">Fox Coils Койлы Намотки</span></div>
-								<div class="hidden-sm">
-									<div><span class="h4">Намотки для густого и вкусного пара!</span></div>
-									<div><span class="h4">Изготовление на заказ! Доставка по всей России!</span></div>
+								<div class="rs-header-ttl-inner hidden-xs hidden-sm">
+									<div><span>Намотки для густого и вкусного пара!</span></div>
+									<div><span>Изготовление на заказ! Доставка по всей России!</span></div>
 								</div>
 							</div>
 						</div>
 						
-						<div class="col-xs-12 col-sm-12 col-md-3">
-							<div class="hidden-sm header_conts t-ar">
-								<div class="tel">
-									<div class="header_phone_number">
-										<button type="button" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-											<span class="s22"><span class="telefon">+7 (919)</span> 871 76 67
-							                <i class="fa fa-chevron-down"></i>
-							                </span>
-										</button>
-										<ul class="dropdown-menu dropdown-menu-right dop_contss fc-dropdown-menu">
-											<li>
-												<a href=""><span><i class="fa fa fa-envelope" aria-hidden="true"></i><span>WhatsApp / Telegram / Viber +7 (919) 871 76 67 </span></span></a>
-											</li>
-											<li>
-												<a href="Mailto:info@coilslab.ru"><span><i class="fa fa fa-envelope" aria-hidden="true"></i><span>info@testtest.ru</span></span></a>
-											</li>
-										</ul>
-									</div>
+						<div class="col-xs-12 col-sm-6 col-md-3">
+							<div class="fc-header-contacts hidden-xs hidden-sm">
+								<div class="header_phone_number">
+									<span class="phone-outer"><span class="phone-inner">+7 (919)</span> 871 76 67</span>
+									<span class="phone-soc">WhatsApp / Telegram / Viber</span>
 								</div>
 							</div>
 						</div>
@@ -86,34 +73,31 @@
 			<div class="fc-header__bottombar">
 				<div class="container">
 					<div class="row">
-						<div class="col-xs-6 col-md-3">
-							
-							<div id="menu2_button">
-								<button type="button" class="box-heading dropdown-toggle fc-dropdown-hover hidden-xs hidden-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<i class="fa fa-bars"></i>Каталог<span class="hidden-xs"> товаров</span>
-									<span class="icorightmenu"><i class="fa fa-chevron-down"></i></span>
-								</button>
-								
-								<div class="box-heading hidden-md hidden-lg dropdown-toggle" data-toggle="dropdown">
+						<div class="col-xs-12 col-md-6 col-lg-3">
+	
+							<div class="fc-menu-btn">
+	
+								<div class="fc-menu-btn-heading dropdown-toggle" data-toggle="dropdown">
 									<i class="fa fa-bars"></i>Каталог<span class="hidden-xs"> товаров</span>
 									<span class="icorightmenu"><i class="fa fa-chevron-down"></i></span>
 								</div>
-								
+	
 								<div class="box-content dropdown-menu fc-dropdown-menu fc-dropdown-menu-header-bottombar">
-									<div id="menu2">
-										<ul class="catalog_list catalog_list_popup catalog_as_popup">
-											<li class="revlevel_1 hasChildren closed">
-												<div class="title"><a href="/"><i class="am_category_icon fa fa-angle-right"></i>Намотки для механических модов</a>
-												</div>
+									<div class="header-category-nav">
+										<ul class="catalog_list catalog_list_popup catalog_as_popup list-unstyled">
+											<li>
+												<a href="/" class="category-nav-link"><i class="fa fa-angle-right category-nav-icon"></i>Намотки для механических модов</a>
 											</li>
-											<li class="revlevel_1 hasChildren closed">
-												<div class="title"><a href="/"><i class="am_category_icon fa fa-angle-right"></i>Намотки для модов на основе платы</a>
-												</div>
+											<li>
+												<a href="/" class="category-nav-link"><i class="fa fa-angle-right category-nav-icon"></i>Намотки для модов на основе платы</a>
 											</li>
 										</ul>
 									</div>
 								</div>
+	
 							</div>
+	
+	
 						</div>
 	
 						<div class="top-links nav razmivcont hidden-xs hidden-sm col-md-6">
@@ -161,6 +145,7 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="row">
+						
 						<div class="product-layout product-grid col-lg-3 col-md-3 col-sm-6 col-xs-12">
 							<div class="product-thumb">
 								<div class="image">
@@ -187,9 +172,9 @@
 										</div>
 										<div class="number bordnone"></div>
 										<input name="quantity" class="plus-minus" value="1" type="hidden">
-										<div class="cart">
-											<a><i class="fa fa-border fa-shopping-basket"><span class="prlistb active">В корзину</span></i></a>
-										</div>
+										<!--<div class="cart">-->
+											<!--<a><i class="fa fa-border fa-shopping-basket"><span class="prlistb active">В корзину</span></i></a>-->
+										<!--</div>-->
 									</div>
 								</div>
 							</div>
@@ -223,9 +208,44 @@
 										</div>
 										<div class="number bordnone"></div>
 										<input name="quantity" class="plus-minus" value="1" type="hidden">
-										<div class="cart">
-											<a><i class="fa fa-border fa-shopping-basket"><span class="prlistb active">В корзину</span></i></a>
+										<!--<div class="cart">-->
+											<!--<a><i class="fa fa-border fa-shopping-basket"><span class="prlistb active">В корзину</span></i></a>-->
+										<!--</div>-->
+									</div>
+								</div>
+							</div>
+						</div>
+	
+	
+						<div class="product-layout product-grid col-lg-3 col-md-3 col-sm-6 col-xs-12">
+							<div class="product-thumb">
+								<div class="image">
+									<a href="/fused-clapton-coil.html">
+										<img src="/images/catalog/fused-clapton-coil-200x200.jpg" alt="Fused Clapton Coil" title="Fused Clapton Coil" class="img-responsive " itemprop="image">
+									</a>
+									<div class="stiker_panel">
+										<span class="hidden special_no_format50"></span>
+									</div>
+									<!--<div class="fapanel">-->
+									<!--<div class="lupa">-->
+									<!--<a onclick=""><i data-toggle="tooltip" data-placement="left" title="" class="fa fa-border fa-eye" data-original-title="Быстрый просмотр"></i></a>-->
+									<!--</div>-->
+									<!--</div>-->
+								</div>
+	
+								<div class="caption product-info clearfix">
+									<h4>
+										<a href="/fused-clapton-coil.html"><span>Fused Clapton Coil</span></a>
+									</h4>
+									<div class="product_buttons">
+										<div class="price">
+											<span class="price_no_format50">125 руб.</span>
 										</div>
+										<div class="number bordnone"></div>
+										<input name="quantity" class="plus-minus" value="1" type="hidden">
+										<!--<div class="cart">-->
+											<!--<a><i class="fa fa-border fa-shopping-basket"><span class="prlistb active">В корзину</span></i></a>-->
+										<!--</div>-->
 									</div>
 								</div>
 							</div>
@@ -255,17 +275,18 @@
 		<div class="footer">
 			<div class="container">
 				<div class="row">
-					<div class="footer_links col-sm-8 col-xs-12">
+					<div class="footer_links col-md-8 col-sm-12">
+						<a href="/catalog">Каталог</a>
 						<a href="/contacts.html">Контакты</a>
-						<a href="/delivery">Доставка и оплата</a>
+						<a href="/polzovatelskoe-soglashenie.html">Пользовательское соглашение</a>
+						<a href="/politika-konfidenczialnosti.html">Политика конфиденциальности</a>
 					</div>
-					<div class="soc_s col-sm-4 col-xs-12">
+					<div class="soc_s col-md-4 col-sm-12">
 						<a href="https://vk.com/fox_coils"><i class="fa fa-vk" data-toggle="tooltip" title="" data-original-title="В Контакте"></i></a>
 						<a href="https://www.instagram.com/foxcoils/"><i class="fa fa-instagram" data-toggle="tooltip" title="" data-original-title="Instagram"></i></a>
-						<a href=""><i class="fa fa-facebook-square" data-toggle="tooltip" title="" data-original-title="Facebook"></i></a>
 					</div>
-					<div class="col-sm-6 col-xs-12"></div>
-					<div class="powered col-sm-6 col-xs-12">foxcoils.ru - Foxcoils.ru - готовые спирали, намотки, койлы. Доставка по РФ &copy; 2017</div>
+					<div class="col-md-6 col-sm-12"></div>
+					<div class="powered col-md-6 col-sm-12">foxcoils.ru - Foxcoils.ru - готовые спирали, намотки, койлы. Доставка по РФ &copy; 2017</div>
 				</div>
 			</div>
 		</div>
