@@ -10,9 +10,36 @@
 <body>
 
 	{{>header}}
-	{{>product-list}}
-	{{>footer}}
+
+
+	<section class="main-content">
+		<div class="container">
 	
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="owl-carousel owl-theme">
+						<div class="item"><img src="images/owl/owl-01.jpg"></div>
+						<div class="item"><img src="images/owl/owl-02.jpg"></div>
+					</div>
+		
+					<script>
+						$('.owl-carousel').owlCarousel({
+							loop:true,
+							margin:10,
+							nav:true,
+							items: 1
+						})
+					</script>
+		
+					{{>product-list}}
+				</div>
+			</div>
+			
+		</div>
+	</section>
+
+	
+	{{>footer}}
 
 </body>
 </html>

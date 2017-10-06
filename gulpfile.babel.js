@@ -92,35 +92,35 @@ gulp.task('less', function () {
 	return gulp.src('app/less/app.less')
 		.pipe(sourcemaps.init())
 		.pipe(plumber())
-		.pipe(less({
-			paths: [
-				path.join('app/less/partials/*.less', 'less', 'includes'),
-				path.join('app/less/partials/**/*.less', 'less', 'includes')
-			]
-		}))
+		.pipe(less())
 		.on('error', notify.onError(function (error) {
 			return '\nAn error occurred while compiling css.\nLook in the console for details.\n' + error;
 		}))
-        .pipe(cleanCSS({
-            debug: true
-        }, (details) => {
-            let stats = details.stats;
-            let input = stats.originalSize / 1000;
-            let output = stats.minifiedSize / 1000;
-            let efficiency = stats.efficiency * 100
-            console.log(`
-File name:  ${details.name}
-Before:     ${input} kB
-After:      ${output} kB
-Time spent: ${stats.timeSpent} ms
-Efficiency: ${efficiency}%
-			`);
-        }))
+//         .pipe(cleanCSS({
+//             debug: true
+//         }, (details) => {
+//             let stats = details.stats;
+//             let input = stats.originalSize / 1000;
+//             let output = stats.minifiedSize / 1000;
+//             let efficiency = stats.efficiency * 100
+//             console.log(`
+// File name:  ${details.name}
+// Before:     ${input} kB
+// After:      ${output} kB
+// Time spent: ${stats.timeSpent} ms
+// Efficiency: ${efficiency}%
+// 			`);
+//         }))
 		.pipe(concat('app.min.css'))
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(params.out + '/css'))
 		.pipe(reload({stream: true}));
 });
+
+
+
+
+
 
 // /******************************
 //  * JS plugins build
@@ -138,7 +138,7 @@ Efficiency: ${efficiency}%
  * JS build
  ******************************/
 gulp.task('scripts', () => {
-	return gulp.src(params.scripts)
+	return gulp.src('app/js/libs/*.js')
 		.pipe(sourcemaps.init())
 		// .pipe(uglify())
 		.pipe(order([

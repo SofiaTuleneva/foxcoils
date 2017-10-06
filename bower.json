@@ -5,6 +5,7 @@
     "handlebars": "^4.0.5",
     "bootstrap": "^3.3.7",
     "font-awesome": "^4.7.0",
-    "bootstrap-dropdown-hover": "^1.0.4"
+    "bootstrap-dropdown-hover": "^1.0.4",
+    "owl.carousel": "^2.2.1"
   }
 }
