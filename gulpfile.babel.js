@@ -19,12 +19,13 @@ import templateData from './app/data/data.json';
 import cleanCSS from 'gulp-clean-css';
 
 let reload = browserSync.reload;
-let bowerFiles = mainBowerFiles();
+// let bowerFiles = mainBowerFiles();
 
 let params = {
 	out: 'build',
-	less: ['app/less/*.less', 'app/less/partials/*.less', 'app/less/partials/**/*.less'],
-	scripts: 'app/js/*.js',
+	templates: 'app/templates/**/*.handlebars',
+	less: 'app/less/**/*.less',
+	scripts: 'app/js/**/*.js',
 	images: 'assets/images/**/*',
 	fonts: 'assets/fonts/**/*'
 };
@@ -46,7 +47,7 @@ gulp.task('server', () => {
 	browserSync.init({
 		server: params.out
 	});
-    gulp.watch('app/templates/**/*.handlebars', ['handlebars']);
+    gulp.watch(params.templates, ['handlebars']);
     gulp.watch(params.less, ['less']);
     gulp.watch(params.scripts, ['scripts']);
 	gulp.watch(params.images, ['images']);
@@ -57,11 +58,12 @@ gulp.task('server', () => {
  * Build task
  ******************************/
 
-gulp.task('build', ['handlebars', 'less', 'scripts', 'images', 'fonts']);
+gulp.task('build', ['handlebars', 'less', 'images', 'scripts', 'fonts']);
 
 /******************************
  * Handlebars build
  ******************************/
+
 gulp.task('handlebars', () => {
     templateData.timestamp = + new Date();
     return gulp.src('app/templates/*.handlebars')
@@ -117,11 +119,6 @@ gulp.task('less', function () {
 		.pipe(reload({stream: true}));
 });
 
-
-
-
-
-
 // /******************************
 //  * JS plugins build
 //  ******************************/
@@ -137,6 +134,7 @@ gulp.task('less', function () {
 /******************************
  * JS build
  ******************************/
+
 gulp.task('scripts', () => {
 	return gulp.src('app/js/libs/*.js')
 		.pipe(sourcemaps.init())
@@ -154,6 +152,7 @@ gulp.task('scripts', () => {
 /******************************
  * Images build
  ******************************/
+
 gulp.task('images', () => {
 	return gulp.src(params.images)
 		.pipe(gulp.dest(params.out + '/images'))
@@ -163,6 +162,7 @@ gulp.task('images', () => {
 /******************************
  * Fonts build
  ******************************/
+
 gulp.task('fonts', () => {
 	return gulp.src(params.fonts)
 		.pipe(gulp.dest(params.out + '/fonts'))
