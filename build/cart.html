@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>FoxCoils</title>
+	<link rel="stylesheet" href="css/app.min.css" type="text/css" />
+	<script type="text/javascript" src="js/app.min.js"></script>
+</head>
+
+<body>
+
+<header>
+	<div class="fc-header">
+		
+		<div class="fc-header__topbar">
+			<div class="container">
+				<div class="fc-header__top-links pull-left">
+					<a href="/">Каталог</a>
+					<a href="/">Контакты</a>
+				</div>
+				<div class="fc-header__top-links pull-right">
+					<a href="/cart.html">Корзина (0)</a>
+				</div>
+			</div>
+		</div>
+		
+		<div class="fc-header__middlebar">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-3">
+						<div class="fc-header__logo">
+							<div class="fc-logo">
+								<a href="/"><img src="images/logo-m.jpg" alt="FoxCoils"></a>
+							</div>						</div>
+					</div>
+
+					<div class="col-xs-12 col-sm-12 col-md-6">
+						<div class="rs-header-ttl">
+							<div><span class="h3">Fox Coils Койлы Намотки</span></div>
+							<div class="rs-header-ttl-inner hidden-xs hidden-sm">
+								<div><span>Намотки для густого и вкусного пара!</span></div>
+								<div><span>Изготовление на заказ! Доставка по всей России!</span></div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="fc-header-contacts hidden-xs hidden-sm">
+							<div class="header_phone_number">
+								<span class="phone-outer"><span class="phone-inner">+7 (919)</span> 871 76 67</span>
+								<span class="phone-soc">WhatsApp / Telegram / Viber</span>
+							</div>
+						</div>
+					</div>
+				
+				</div>
+			</div>
+		</div>
+		
+		<div class="fc-header__bottombar">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-md-6 col-lg-3">
+
+						<div class="fc-menu-btn">
+
+							<div class="fc-menu-btn-heading dropdown-toggle" data-toggle="dropdown">
+								<i class="fa fa-bars"></i>Каталог<span class="hidden-xs"> товаров</span>
+								<span class="icorightmenu"><i class="fa fa-chevron-down"></i></span>
+							</div>
+
+							<div class="box-content dropdown-menu fc-dropdown-menu fc-dropdown-menu-header-bottombar">
+								<div class="header-category-nav">
+									<ul class="catalog_list catalog_list_popup catalog_as_popup list-unstyled">
+										<li>
+											<a href="/" class="category-nav-link"><i class="fa fa-angle-right category-nav-icon"></i>Намотки для механических модов</a>
+										</li>
+										<li>
+											<a href="/" class="category-nav-link"><i class="fa fa-angle-right category-nav-icon"></i>Намотки для модов на основе платы</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+
+						</div>
+
+
+					</div>
+
+					<div class="top-links nav razmivcont hidden-xs hidden-sm col-md-6">
+						<ul class="list-inline">
+							<!--<li><a href="latest"><i class="hidden-md fa fa-bullhorn"></i>Новинки</a>-->
+							<!--</li>-->
+							<!--<li><a href="best"><i class="hidden-md fa fa-star"></i>Хиты продаж</a>-->
+							<!--</li>-->
+							<!--<li><a href="specials"><i class="hidden-md fa fa-certificate"></i>Акции</a>-->
+							<!--</li>-->
+							<!--<li><a href="news"><i class="hidden-md fa fa-newspaper-o"></i>Новости</a>-->
+							<!--</li>-->
+							<!--<li><a href="otzivy"><i class="hidden-md fa fa-check"></i>Отзывы</a>-->
+							<!--</li>-->
+							<!--<li><a href="/contacts.html"><i class="hidden-md fa fa-newspaper-o"></i>Контакты</a>-->
+							<!--</li>-->
+						</ul>
+					</div>
+
+					<!--<div class="razmivcont col-xs-6 col-md-3">-->
+						<!--<div id="cart" class="btn-group show-on-hover">-->
+							<!--<button type="button" class="cart dropdown-toggle fc-dropdown-hover hidden-xs hidden-sm" data-toggle="dropdown">-->
+								<!--<span id="cart-total"><i class="fa fa-shopping-basket"></i><span class="hidden-xs">Корзина<span class="hidden-md"> покупок</span></span>: 0</span><span class="icorightmenu"><i class="fa fa-chevron-down"></i></span>-->
+							<!--</button>-->
+							<!--<button class="cart dropdown-toggle hidden-md hidden-lg" data-toggle="dropdown">-->
+								<!--<span id="cart-total-popup"><i class="fa fa-shopping-basket"></i><span class="hidden-xs">Корзина<span class="hidden-md"> покупок</span></span>: 0</span>-->
+							<!--</button>-->
+							<!--<ul class="dropdown-menu fc-dropdown-menu fc-dropdown-menu-header-bottombar pull-right">-->
+								<!--<li>-->
+									<!--<p class="text-center">В корзине пусто!</p>-->
+								<!--</li>-->
+							<!--</ul>-->
+						<!--</div>-->
+					<!--</div>-->
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+
+
+<section class="main-content">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-sm-12">
+				
+				<div class="fc-cart-products">
+				
+					<table class="table table-striped table-responsive fc-cart-products-table">
+						
+						<thead>
+						<tr>
+							<th class="image">Фото</th>
+							<th class="name">Наименование товара</th>
+							<th class="quantity">
+								<span title="Количество">Кол-во</span>
+							</th>
+							<th class="price">Цена</th>
+							<th class="total">Итого</th>
+						</tr>
+						</thead>
+				
+				
+				
+						<tbody>
+				
+						<tr>
+							<td class="image">
+								<a href="http://foxcoils.ru/fused-clapton-coil-ss.html">
+									<img src="http://foxcoils.ru/images/catalog/fused-clapton-coil/gallery/fused-clapton-coil-69x69.jpg" alt="Fused Clapton Coil SS" title="Fused Clapton Coil SS">
+								</a>
+							</td>
+							<td class="name">
+								<a href="http://foxcoils.ru/fused-clapton-coil-ss.html">Fused Clapton Coil SS</a>
+								<div class="options"></div>
+							</td>
+							<td class="quantity">
+								1
+							</td>
+							<td class="price">250 р.</td>
+							<td class="total">250 р.</td>
+						</tr>
+				
+						<tr>
+							<td class="image">
+								<a href="http://foxcoils.ru/fused-clapton-coil-ss.html">
+									<img src="http://foxcoils.ru/images/catalog/fused-clapton-coil/gallery/fused-clapton-coil-69x69.jpg" alt="Fused Clapton Coil SS" title="Fused Clapton Coil SS">
+								</a>
+							</td>
+							<td class="name">
+								<a href="http://foxcoils.ru/fused-clapton-coil-ss.html">Fused Clapton Coil SS</a>
+								<div class="options"></div>
+							</td>
+							<td class="quantity">
+								1
+							</td>
+							<td class="price">250 р.</td>
+							<td class="total">250 р.</td>
+						</tr>
+				
+						<tr>
+							<td class="image">
+								<a href="http://foxcoils.ru/fused-clapton-coil-ss.html">
+									<img src="http://foxcoils.ru/images/catalog/fused-clapton-coil/gallery/fused-clapton-coil-69x69.jpg" alt="Fused Clapton Coil SS" title="Fused Clapton Coil SS">
+								</a>
+							</td>
+							<td class="name">
+								<a href="http://foxcoils.ru/fused-clapton-coil-ss.html">Fused Clapton Coil SS</a>
+								<div class="options"></div>
+							</td>
+							<td class="quantity">
+								1
+							</td>
+							<td class="price">250 р.</td>
+							<td class="total">250 р.</td>
+						</tr>
+				
+						</tbody>
+				
+					</table>
+				</div>
+				
+				<div class="fc-cart-products-tr">
+					<div class="fc-cart-products-td">
+						<span class="fc-total">
+							<b>Итого:</b>
+						</span>
+						<span class="fc-total">1 410 р.</span>
+					</div>
+				</div>				<div class="row">
+					<div class="col-sm-12 col-md-6">
+				
+						<div class="panel panel-default">
+							<div class="panel-heading"><b>Покупатель</b></div>
+							<div class="panel-body">
+								<div class="col-xs-12">
+									<div class="fc-cart-checkout-form">
+										<fieldset class="form-horizontal">
+											<div class="form-group required">
+												<label class="control-label" for="customer_firstname">Имя</label>
+												<input class="form-control" id="customer_firstname" type="text">
+											</div>
+											<div class="form-group required">
+												<label class="control-label" for="customer_lastname">Фамилия</label>
+												<input class="form-control" id="customer_lastname" type="text">
+											</div>
+											<div class="form-group required">
+												<label class="control-label" for="customer_email">Email</label>
+												<input class="form-control" id="customer_email" type="text">
+											</div>
+										</fieldset>
+									</div>
+								</div>
+							</div>
+						</div>
+				
+						<div class="panel panel-default">
+							<div class="panel-heading"><b>Комментарий</b></div>
+							<div class="panel-body">
+								<div class="col-xs-12">
+									<div class="fc-cart-checkout-form">
+										<fieldset class="form-horizontal">
+											<div class="form-group">
+												<textarea class="form-control" id="customer_comment" type="text"></textarea>
+											</div>
+										</fieldset>
+									</div>
+								</div>
+							</div>
+						</div>
+				
+					</div>
+				
+					<div class="col-sm-12 col-md-6">
+				
+						<div class="panel panel-default">
+							<div class="panel-heading"><b>Адрес доставки</b></div>
+							<div class="panel-body">
+								<div class="col-xs-12">
+									<div class="fc-cart-checkout-form">
+										<fieldset class="form-horizontal">
+											<div class="form-group required">
+												<label class="control-label">Регион</label>
+												<input class="form-control" type="text">
+											</div>
+											<div class="form-group required">
+												<label class="control-label">Город</label>
+												<input class="form-control" type="text">
+											</div>
+											<div class="form-group required">
+												<label class="control-label">Индекс</label>
+												<input class="form-control" type="text">
+											</div>
+											<div class="form-row">
+												<div class="form-group required col-md-6">
+													<label class="control-label">Улица</label>
+													<input class="form-control" type="text">
+												</div>
+												<div class="form-group required col-md-4">
+													<label class="control-label">Дом</label>
+													<input class="form-control" type="text">
+												</div>
+												<div class="form-group required col-md-2">
+													<label class="control-label">Квартира</label>
+													<input class="form-control" type="text">
+												</div>
+											</div>
+										</fieldset>
+									</div>
+								</div>
+							</div>
+						</div>
+				
+					</div>
+				
+				</div>
+				
+				
+				
+				
+			</div>
+		</div>
+
+	</div>
+</section>
+
+
+<footer>
+	<div class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="footer_links col-md-8 col-sm-12">
+					<a href="/catalog">Каталог</a>
+					<a href="/contacts.html">Контакты</a>
+					<a href="/polzovatelskoe-soglashenie.html">Пользовательское соглашение</a>
+					<a href="/politika-konfidenczialnosti.html">Политика конфиденциальности</a>
+				</div>
+				<div class="soc_s col-md-4 col-sm-12">
+					<a href="https://vk.com/fox_coils"><i class="fa fa-vk" data-toggle="tooltip" title="" data-original-title="В Контакте"></i></a>
+					<a href="https://www.instagram.com/foxcoils/"><i class="fa fa-instagram" data-toggle="tooltip" title="" data-original-title="Instagram"></i></a>
+				</div>
+				<div class="col-md-6 col-sm-12"></div>
+				<div class="powered col-md-6 col-sm-12">foxcoils.ru - Foxcoils.ru - готовые спирали, намотки, койлы. Доставка по РФ &copy; 2017</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<script>
+	$(document).ready(function() {
+		
+		// header menu dropdowns
+
+		$('.fc-dropdown-hover').bootstrapDropdownHover();
+		
+		// product page gallery
+		
+		$('.thumbnails .images-additional').magnificPopup({
+			type:'image',
+			delegate: 'a',
+			gallery: {
+				enabled:true
+			},
+			callbacks: {
+				open: function() {
+					$('body').addClass('razmiv2');
+					$('#pagefader2').fadeIn(70);
+					if (document.body.scrollHeight > document.body.offsetHeight) {
+						$('#top3').css('right', '8.5px');
+					}
+				},
+				close: function() {
+					$('body').removeClass('razmiv2');
+					$('#pagefader2').fadeOut(70);
+					$('#top3').css('right', 'initial');
+				}
+			}
+		});
+		
+		$('.thumbnails .main-image img').click(function(){
+			if ($('.images-additional').length > 0) {
+				var startnumber = $(this).parent().attr('data-number');
+				$('.images-additional').magnificPopup('open', startnumber);
+				return false
+			} else {
+				$(this).magnificPopup('open');
+				return false
+			}
+		});
+	});
+</script>
+
+
+</body>
+</html>
