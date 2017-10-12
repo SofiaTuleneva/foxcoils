@@ -4,6 +4,19 @@
 	td {
 		vertical-align: middle;
 	}
+
+	.remove {
+		.fa-remove {
+			font-size: 16px;
+			color: @base-font-color;
+			opacity: 0.5;
+			.transition();
+
+			&:hover {
+				opacity: 0.8;
+			}
+		}
+	}
 }
 
 .fc-cart-total {
@@ -19,4 +32,15 @@
 
 .fc-cart-comment {
 	resize: none;
+}
+
+.fc-cart-checkout-form {
+	.control-label {
+		margin-bottom: 0;
+	}
+}
+
+.fc-item-options {
+	margin-top: 10px;
+	font-size: 12px;
 }

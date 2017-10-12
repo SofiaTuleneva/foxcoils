@@ -12,15 +12,15 @@
 							<fieldset class="form-horizontal">
 								<div class="form-group required">
 									<label class="control-label" for="customer_firstname">Имя</label>
-									<input class="form-control" id="customer_firstname" type="text">
+									<input class="form-control" id="customer_firstname" type="text" required>
 								</div>
 								<div class="form-group required">
 									<label class="control-label" for="customer_lastname">Фамилия</label>
-									<input class="form-control" id="customer_lastname" type="text">
+									<input class="form-control" id="customer_lastname" type="text" required>
 								</div>
 								<div class="form-group required">
 									<label class="control-label" for="customer_email">Email</label>
-									<input class="form-control" id="customer_email" type="text">
+									<input class="form-control" id="customer_email" type="email" required>
 								</div>
 							</fieldset>
 						</div>
@@ -33,21 +33,24 @@
 				<div class="panel-heading"><b>Способ доставки</b></div>
 				<div class="panel-body">
 					<div class="col-xs-12">
-						<div class="fc-cart-checkout-form">
-							<fieldset class="form-horizontal">
-								<div class="form-group required">
-									<select class="form-control" type="text">
-										<option>Почта России</option>
-										<option>СДЭК</option>
-										<option>Самовывоз</option>
-									</select>
-								</div>
-							</fieldset>
+						<div class="radio">
+							<label for="pochta-rossii">
+								<input id="pochta-rossii" name="shipping-method" checked type="radio"> Почта России
+							</label>
+						</div>
+						<div class="radio">
+							<label for="sdek">
+								<input id="sdek" name="shipping-method" type="radio"> СДЭК
+							</label>
+						</div>
+						<div class="radio">
+							<label for="samovyvoz">
+								<input id="samovyvoz" name="shipping-method" type="radio"> Самовывоз
+							</label>
 						</div>
 					</div>
 				</div>
 			</div>
-			
 			
 		</div>
 	
@@ -61,37 +64,37 @@
 							<fieldset class="form-horizontal">
 								<div class="form-group required">
 									<label class="control-label">Страна</label>
-									<input class="form-control" type="text">
+									<input class="form-control" type="text" required>
 								</div>
 								<div class="form-group required">
 									<label class="control-label">Регион</label>
-									<input class="form-control" type="text">
+									<input class="form-control" type="text" required>
 								</div>
 								<div class="form-group required">
 									<label class="control-label">Город</label>
-									<input class="form-control" type="text">
+									<input class="form-control" type="text" required>
 								</div>
 								<div class="form-group required">
 									<label class="control-label">Индекс</label>
-									<input class="form-control" type="text">
-								</div>
-								<div class="row">
-									<div class="form-group">
-										<div class="col-md-6">
-											<label class="control-label">Улица</label>
-											<input class="form-control" type="text">
-										</div>
-										<div class="col-md-3">
-											<label class="control-label">Дом</label>
-											<input class="form-control" type="text">
-										</div>
-										<div class="col-md-3">
-											<label class="control-label">Квартира</label>
-											<input class="form-control" type="text">
-										</div>
-									</div>
+									<input class="form-control" type="text" required pattern="\d+">
 								</div>
 							</fieldset>
+							<div class="row">
+								<div class="row">
+									<div class="form-group col-md-6">
+										<label class="control-label">Улица</label>
+										<input class="form-control" type="text">
+									</div>
+									<div class="form-group col-md-3">
+										<label class="control-label">Дом</label>
+										<input class="form-control" type="text">
+									</div>
+									<div class="form-group col-md-3">
+										<label class="control-label">Квартира</label>
+										<input class="form-control" type="text">
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -116,7 +119,7 @@
 
 		<div class="col-xs-12">
 			<div class="fc-cart-checkout-btn text-right">
-				<button type="button" class="btn btn-primary btn-lg fc-button">
+				<button type="submit" class="btn btn-primary btn-lg fc-button">
 					Оформить заказ
 				</button>
 			</div>
