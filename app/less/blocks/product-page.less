@@ -681,7 +681,7 @@ div.required .control-label:before {
 #column-left + #content .product-info .pop_left {
 	float: none;
 }
-#column-left + #content .product-info #button-cart {
+#column-left + #content .product-info .fc-button {
 	float: right;
 	margin: 0 0 0 10px;
 }
@@ -907,42 +907,49 @@ div.required .control-label:before {
 	width: 44px;
 	height: 20px;
 }
-.product-info #button-cart {
+.btn.fc-button {
 	background: #637280;
 	color: #fff;
-	font-size: 16px;
-	padding: 0 25px;
-	cursor: pointer;
 	display: inline-block;
 	border-radius: 2px;
 	text-align: center;
-	-webkit-transition: all 100ms linear;
-	-moz-transition: all 100ms linear;
-	-ms-transition: all 100ms linear;
-	-o-transition: all 100ms linear;
-	transition: all 100ms linear;
 	border: none;
 	outline: none;
-	margin: 0 10px;
-	height: 32px;
-	line-height: 32px;
-}
-.product-info #button-cart:hover {
-	background: #49545e;
 	-webkit-transition: all 100ms linear;
 	-moz-transition: all 100ms linear;
 	-ms-transition: all 100ms linear;
 	-o-transition: all 100ms linear;
 	transition: all 100ms linear;
+
+	&:hover {
+		background: #637280;
+	}
+
+	&:active {
+		background: #49545e;
+	}
+
+	&.btn-lg {
+		font-size: 16px;
+		padding: 6px 20px;
+
+		.fa-shopping-basket {
+			padding-right: 10px;
+		}
+	}
+
+	&.btn-sm {
+		font-size: 14px;
+		padding: 3px 7px;
+
+		.fa-shopping-basket {
+			padding-right: 2px;
+		}
+	}
 }
-.product-info #button-cart .fa {
-	padding-right: 10px;
-	font-size: 14px;
-	margin-top: -4px;
-	vertical-align: middle;
-}
+
 @media (max-width: 344px) {
-	.product-info #button-cart {
+	.fc-button {
 		display: block;
 		margin-top: 10px;
 		margin-left: 0;

@@ -1,90 +1,129 @@
-<div class="row">
-	<div class="col-sm-12 col-md-6">
+<form>
 
-		<div class="panel panel-default">
-			<div class="panel-heading"><b>Покупатель</b></div>
-			<div class="panel-body">
-				<div class="col-xs-12">
-					<div class="fc-cart-checkout-form">
-						<fieldset class="form-horizontal">
-							<div class="form-group required">
-								<label class="control-label" for="customer_firstname">Имя</label>
-								<input class="form-control" id="customer_firstname" type="text">
-							</div>
-							<div class="form-group required">
-								<label class="control-label" for="customer_lastname">Фамилия</label>
-								<input class="form-control" id="customer_lastname" type="text">
-							</div>
-							<div class="form-group required">
-								<label class="control-label" for="customer_email">Email</label>
-								<input class="form-control" id="customer_email" type="text">
-							</div>
-						</fieldset>
+<div class="fc-cart-checkout">
+	<div class="row">
+		<div class="col-sm-12 col-md-6">
+	
+			<div class="panel panel-default">
+				<div class="panel-heading"><b>Покупатель</b></div>
+				<div class="panel-body">
+					<div class="col-xs-12">
+						<div class="fc-cart-checkout-form">
+							<fieldset class="form-horizontal">
+								<div class="form-group required">
+									<label class="control-label" for="customer_firstname">Имя</label>
+									<input class="form-control" id="customer_firstname" type="text">
+								</div>
+								<div class="form-group required">
+									<label class="control-label" for="customer_lastname">Фамилия</label>
+									<input class="form-control" id="customer_lastname" type="text">
+								</div>
+								<div class="form-group required">
+									<label class="control-label" for="customer_email">Email</label>
+									<input class="form-control" id="customer_email" type="text">
+								</div>
+							</fieldset>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
-		<div class="panel panel-default">
-			<div class="panel-heading"><b>Комментарий</b></div>
-			<div class="panel-body">
-				<div class="col-xs-12">
-					<div class="fc-cart-checkout-form">
-						<fieldset class="form-horizontal">
-							<div class="form-group">
-								<textarea class="form-control" id="customer_comment" type="text"></textarea>
-							</div>
-						</fieldset>
+
+			<div class="panel panel-default">
+				<div class="panel-heading"><b>Способ доставки</b></div>
+				<div class="panel-body">
+					<div class="col-xs-12">
+						<div class="fc-cart-checkout-form">
+							<fieldset class="form-horizontal">
+								<div class="form-group required">
+									<select class="form-control" type="text">
+										<option>Почта России</option>
+										<option>СДЭК</option>
+										<option>Самовывоз</option>
+									</select>
+								</div>
+							</fieldset>
+						</div>
 					</div>
 				</div>
 			</div>
+			
+			
+		</div>
+	
+		<div class="col-sm-12 col-md-6">
+	
+			<div class="panel panel-default">
+				<div class="panel-heading"><b>Адрес доставки</b></div>
+				<div class="panel-body">
+					<div class="col-xs-12">
+						<div class="fc-cart-checkout-form">
+							<fieldset class="form-horizontal">
+								<div class="form-group required">
+									<label class="control-label">Страна</label>
+									<input class="form-control" type="text">
+								</div>
+								<div class="form-group required">
+									<label class="control-label">Регион</label>
+									<input class="form-control" type="text">
+								</div>
+								<div class="form-group required">
+									<label class="control-label">Город</label>
+									<input class="form-control" type="text">
+								</div>
+								<div class="form-group required">
+									<label class="control-label">Индекс</label>
+									<input class="form-control" type="text">
+								</div>
+								<div class="row">
+									<div class="form-group">
+										<div class="col-md-6">
+											<label class="control-label">Улица</label>
+											<input class="form-control" type="text">
+										</div>
+										<div class="col-md-3">
+											<label class="control-label">Дом</label>
+											<input class="form-control" type="text">
+										</div>
+										<div class="col-md-3">
+											<label class="control-label">Квартира</label>
+											<input class="form-control" type="text">
+										</div>
+									</div>
+								</div>
+							</fieldset>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading"><b>Комментарий</b></div>
+				<div class="panel-body">
+					<div class="col-xs-12">
+						<div class="fc-cart-checkout-form">
+							<fieldset class="form-horizontal">
+								<div class="form-group">
+									<textarea class="form-control fc-cart-comment" rows="4" id="customer_comment" type="text"></textarea>
+								</div>
+							</fieldset>
+						</div>
+					</div>
+				</div>
+			</div>
+	
 		</div>
 
+		<div class="col-xs-12">
+			<div class="fc-cart-checkout-btn text-right">
+				<button type="button" class="btn btn-primary btn-lg fc-button">
+					Оформить заказ
+				</button>
+			</div>
+		</div>
+		
 	</div>
-
-	<div class="col-sm-12 col-md-6">
-
-		<div class="panel panel-default">
-			<div class="panel-heading"><b>Адрес доставки</b></div>
-			<div class="panel-body">
-				<div class="col-xs-12">
-					<div class="fc-cart-checkout-form">
-						<fieldset class="form-horizontal">
-							<div class="form-group required">
-								<label class="control-label">Регион</label>
-								<input class="form-control" type="text">
-							</div>
-							<div class="form-group required">
-								<label class="control-label">Город</label>
-								<input class="form-control" type="text">
-							</div>
-							<div class="form-group required">
-								<label class="control-label">Индекс</label>
-								<input class="form-control" type="text">
-							</div>
-							<div class="form-row">
-								<div class="form-group required col-md-6">
-									<label class="control-label">Улица</label>
-									<input class="form-control" type="text">
-								</div>
-								<div class="form-group required col-md-4">
-									<label class="control-label">Дом</label>
-									<input class="form-control" type="text">
-								</div>
-								<div class="form-group required col-md-2">
-									<label class="control-label">Квартира</label>
-									<input class="form-control" type="text">
-								</div>
-							</div>
-						</fieldset>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</div>
-
 </div>
 
-
+</form>
 

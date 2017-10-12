@@ -13,13 +13,13 @@
 	<div class="fc-header">
 		
 		<div class="fc-header__topbar">
-			<div class="container">
-				<div class="fc-header__top-links pull-left">
+			<div class="fc-header__top-links container">
+				<div class="pull-left">
 					<a href="/">Каталог</a>
 					<a href="/">Контакты</a>
 				</div>
-				<div class="fc-header__top-links pull-right">
-					<a href="/cart.html">Корзина (0)</a>
+				<div class="pull-right">
+					<a href="/cart.html"><i class="fa fa-shopping-basket"></i> Корзина (0)</a>
 				</div>
 			</div>
 		</div>
@@ -288,7 +288,7 @@
 										</div>
 										<input name="quantity" class="plus-minus" value="1" onchange="validate_pole(this);" onkeyup="validate_pole(this,50,'=',1,936);" type="text">
 									</div>
-									<button type="button" id="button-cart" onclick="get_revpopup_cart(50,'product',get_revpopup_cart_quantity('50'));" data-loading-text="Загрузка..." class="btn btn-primary btn-lg"><i class="fa fa-shopping-basket"></i>В корзину</button>
+									<button type="button" onclick="get_revpopup_cart(50,'product',get_revpopup_cart_quantity('50'));" data-loading-text="Загрузка..." class="btn btn-primary btn-lg fc-button"><i class="fa fa-shopping-basket"></i>В корзину</button>
 								</div>
 							</div>
 						</div>
