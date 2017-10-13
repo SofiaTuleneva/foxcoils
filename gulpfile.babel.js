@@ -26,6 +26,7 @@ let params = {
 	templates: 'app/templates/**/*.handlebars',
 	less: 'app/less/**/*.less',
 	scripts: 'app/js/**/*.js',
+	myscripts: 'app/js/*.js',
 	images: 'assets/images/**/*',
 	fonts: 'assets/fonts/**/*'
 };
@@ -50,6 +51,7 @@ gulp.task('server', () => {
     gulp.watch(params.templates, ['handlebars']);
     gulp.watch(params.less, ['less']);
     gulp.watch(params.scripts, ['scripts']);
+    gulp.watch(params.myscripts, ['myscripts']);
 	gulp.watch(params.images, ['images']);
 	gulp.watch(params.fonts, ['fonts']);
 });
@@ -58,7 +60,7 @@ gulp.task('server', () => {
  * Build task
  ******************************/
 
-gulp.task('build', ['handlebars', 'less', 'images', 'scripts', 'fonts']);
+gulp.task('build', ['handlebars', 'less', 'images', 'scripts', 'myscripts', 'fonts']);
 
 /******************************
  * Handlebars build
@@ -145,6 +147,14 @@ gulp.task('scripts', () => {
             "*.js"
 		]))
 		.pipe(concat('app.min.js'))
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest(params.out + '/js'));
+});
+
+gulp.task('myscripts', () => {
+	return gulp.src('app/js/*.js')
+		.pipe(sourcemaps.init())
+		.pipe(concat('myscripts.js'))
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(params.out + '/js'));
 });
