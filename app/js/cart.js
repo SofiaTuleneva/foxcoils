@@ -21,35 +21,67 @@ function getCookie(cname) {
 	return "";
 }
 
-$(document).ready(function () {
 
-	var products = [
-		{id: 12, qty: 1},
-		{id: 13, qty: 1},
-		{id: 19, qty: 1},
-		{id: 10, qty: 1},
-		{id: 15, qty: 10}
-	];
 
-	// при изменении массива products
+function addProductToCart (id, qty) {
 
-	setCookie('cart', JSON.stringify(products));
-	console.log(document.cookie);
+	let setProductsCookie = function () {
+		let products = JSON.parse(getCookie('cart'));
+		if (products.length !== 0) {
+			let isTheSameProduct = false;
+			products.forEach(function(item) {
+				if (item.id === id) {
+					item.qty += qty;
+					isTheSameProduct = true;
+				}
+			});
+			if (!isTheSameProduct) {
+				products.push({id: id, qty: qty});
+			}
+		} else {
+			products.push({id: id, qty: qty});
+		}
+		setCookie('cart', JSON.stringify(products));
+	};
 
-	// при выводе на экран
+	if (getCookie("cart") !== "") {
+		setProductsCookie();
+	} else {
+		setCookie('cart', JSON.stringify([]));
+		setProductsCookie();
+	}
 
-	function getCartTotalQty() {
-		var productsRecieved = JSON.parse(getCookie('cart'));
-		var totalQty = 0;
-		productsRecieved.forEach(function(item) {
+	showCartTotalQty();
+}
+
+
+function getCartProducts () {
+	if (getCookie("cart") !== "") {
+		return JSON.parse(getCookie('cart'));
+	}
+}
+
+
+function getCartTotalQty () {
+	if (getCookie("cart") !== "") {
+		let products = JSON.parse(getCookie('cart'));
+		let totalQty = 0;
+		products.forEach(function(item) {
 			totalQty += item.qty;
 		});
 		return totalQty;
+	} else {
+		return 0;
 	}
+}
 
+function showCartTotalQty () {
 	$('#cart-total-qty').html(getCartTotalQty());
+}
 
-	var productsRecieved = JSON.parse(getCookie('cart'));
 
-
+$(document).ready(function () {
+	console.log(document.cookie);
+	showCartTotalQty();
 });
+
