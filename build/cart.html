@@ -134,246 +134,227 @@
 
 		<div class="row">
 			<div class="col-sm-12">
-				
-				<div class="fc-cart-products">
-					
-					<div id="fc-cart-products"></div>
-				
-					<table class="table table-striped table-responsive fc-cart-products-table">
+				<div id="fc-cart">
+					<div class="fc-cart-products">
 						
-						<thead>
-						<tr>
-							<th class="image">Фото</th>
-							<th class="name">Наименование товара</th>
-							<th class="quantity">
-								<span title="Количество">Кол-во</span>
-							</th>
-							<th class="price">Цена</th>
-							<th class="total">Итого</th>
-							<th class="remove"></th>
-						</tr>
-						</thead>
-				
-				
-				
-						<tbody>
-				
-						<tr>
-							<td class="image">
-								<a href="http://foxcoils.ru/fused-clapton-coil-ss.html">
-									<img src="http://foxcoils.ru/images/catalog/fused-clapton-coil/gallery/fused-clapton-coil-69x69.jpg" alt="Fused Clapton Coil SS" title="Fused Clapton Coil SS">
-								</a>
-							</td>
-							<td class="name">
-								<a href="http://foxcoils.ru/fused-clapton-coil-ss.html">Fused Clapton Coil SS</a>
-								<div class="fc-item-options">
-									<ul class="list-unstyled">
-										<li>Материал 2х0.4 316L + 0.1 n80 | ~0.11 Ω*</li>
-										<li>Оправа 3.0</li>
-									</ul>
-								</div>
-							</td>
-							<td class="quantity">
-								1
-							</td>
-							<td class="price">250 р.</td>
-							<td class="total">250 р.</td>
-							<td class="remove">
-								<a><i class="fa fa-remove"></i></a>
-							</td>
-						</tr>
-				
-						<tr>
-							<td class="image">
-								<a href="http://foxcoils.ru/fused-clapton-coil-ss.html">
-									<img src="http://foxcoils.ru/images/catalog/fused-clapton-coil/gallery/fused-clapton-coil-69x69.jpg" alt="Fused Clapton Coil SS" title="Fused Clapton Coil SS">
-								</a>
-							</td>
-							<td class="name">
-								<a href="http://foxcoils.ru/fused-clapton-coil-ss.html">Fused Clapton Coil SS</a>
-								<div class="fc-item-options">
-									<ul class="list-unstyled">
-										<li>Материал 2х0.4 316L + 0.1 n80 | ~0.11 Ω*</li>
-										<li>Оправа 3.0</li>
-									</ul>
-								</div>
-							</td>
-							<td class="quantity">
-								1
-							</td>
-							<td class="price">250 р.</td>
-							<td class="total">250 р.</td>
-							<td class="remove">
-								<a><i class="fa fa-remove"></i></a>
-							</td>
-						</tr>
-				
-						
-						<tr>
-							<td colspan="10" class="text-right">
-								<span class="fc-cart-total">
-									<b>Итого:</b>
-								</span>
-								<span class="fc-cart-total">750 р.</span>
-							</td>
-						</tr>
-				
-						<tr>
-							<td colspan="10" class="text-right">
-								<span class="fc-cart-total">
-									<b>Стоимость доставки:</b>
-								</span>
-								<span class="fc-cart-total">200 р.</span>
-							</td>
-						</tr>
-				
-						<tr>
-							<td colspan="10" class="text-right">
-								<span class="fc-cart-total">
-									<b>Цена с учетом стоимости доставки:</b>
-								</span>
-								<span class="fc-cart-total">950 р.</span>
-							</td>
-						</tr>
-				
-						</tbody>
-				
-					</table>
-				</div>
-				
-				<hr/>				<form>
-				
-				<div class="fc-cart-checkout">
-					<div class="row">
-						<div class="col-sm-12 col-md-6">
+						<div id="fc-cart-products"></div>
 					
-							<div class="panel panel-default">
-								<div class="panel-heading"><b>Покупатель</b></div>
-								<div class="panel-body">
-									<div class="col-xs-12">
-										<div class="fc-cart-checkout-form">
-											<fieldset class="form-horizontal">
-												<div class="form-group required">
-													<label class="control-label" for="customer_firstname">Имя</label>
-													<input class="form-control" id="customer_firstname" type="text" required>
-												</div>
-												<div class="form-group required">
-													<label class="control-label" for="customer_lastname">Фамилия</label>
-													<input class="form-control" id="customer_lastname" type="text" required>
-												</div>
-												<div class="form-group required">
-													<label class="control-label" for="customer_email">Email</label>
-													<input class="form-control" id="customer_email" type="email" required>
-												</div>
-											</fieldset>
-										</div>
-									</div>
-								</div>
-							</div>
-				
-				
-							<div class="panel panel-default">
-								<div class="panel-heading"><b>Способ доставки</b></div>
-								<div class="panel-body">
-									<div class="col-xs-12">
-										<div class="radio">
-											<label for="pochta-rossii">
-												<input id="pochta-rossii" name="shipping-method" checked type="radio"> Почта России
-											</label>
-										</div>
-										<div class="radio">
-											<label for="sdek">
-												<input id="sdek" name="shipping-method" type="radio"> СДЭК
-											</label>
-										</div>
-										<div class="radio">
-											<label for="samovyvoz">
-												<input id="samovyvoz" name="shipping-method" type="radio"> Самовывоз
-											</label>
-										</div>
-									</div>
-								</div>
-							</div>
+						<table class="table table-striped table-responsive fc-cart-products-table">
 							
-						</div>
+							<thead>
+							<tr>
+								<th class="image">Фото</th>
+								<th class="name">Наименование товара</th>
+								<th class="quantity">
+									<span title="Количество">Кол-во</span>
+								</th>
+								<th class="price">Цена</th>
+								<th class="total">Итого</th>
+								<th class="remove"></th>
+							</tr>
+							</thead>
 					
-						<div class="col-sm-12 col-md-6">
 					
-							<div class="panel panel-default">
-								<div class="panel-heading"><b>Адрес доставки</b></div>
-								<div class="panel-body">
-									<div class="col-xs-12">
-										<div class="fc-cart-checkout-form">
-											<fieldset class="form-horizontal">
-												<div class="form-group required">
-													<label class="control-label">Страна</label>
-													<input class="form-control" type="text" required>
-												</div>
-												<div class="form-group required">
-													<label class="control-label">Регион</label>
-													<input class="form-control" type="text" required>
-												</div>
-												<div class="form-group required">
-													<label class="control-label">Город</label>
-													<input class="form-control" type="text" required>
-												</div>
-												<div class="form-group required">
-													<label class="control-label">Индекс</label>
-													<input class="form-control" type="text" required pattern="\d+">
-												</div>
-											</fieldset>
-											<div class="row">
+					
+							<tbody>
+					
+							<tr>
+								<td class="image">
+									<a href="http://foxcoils.ru/fused-clapton-coil-ss.html">
+										<img src="http://foxcoils.ru/images/catalog/fused-clapton-coil/gallery/fused-clapton-coil-69x69.jpg" alt="Fused Clapton Coil SS" title="Fused Clapton Coil SS">
+									</a>
+								</td>
+								<td class="name">
+									<a href="http://foxcoils.ru/fused-clapton-coil-ss.html">Fused Clapton Coil SS</a>
+									<div class="fc-item-options">
+										<ul class="list-unstyled">
+											<li>Материал 2х0.4 316L + 0.1 n80 | ~0.11 Ω*</li>
+											<li>Оправа 3.0</li>
+										</ul>
+									</div>
+								</td>
+								<td class="quantity">
+									<div class="row">
+										<div class="col-xs-3">
+											<input type="text" value="1" class="form-control fc-cart-qty" data-item_id="8">
+										</div>
+									</div>
+								</td>
+								<td class="price">250 р.</td>
+								<td class="total">250 р.</td>
+								<td class="remove">
+									<a class="fc-cart-remove" data-item_id="8"><i class="fa fa-remove"></i></a>
+								</td>
+							</tr>
+					
+							<tr>
+								<td colspan="10" class="text-right">
+									<span class="fc-cart-total">
+										<b>Итого:</b>
+									</span>
+									<span class="fc-cart-total">750 р.</span>
+								</td>
+							</tr>
+					
+							<tr>
+								<td colspan="10" class="text-right">
+									<span class="fc-cart-total">
+										<b>Стоимость доставки:</b>
+									</span>
+									<span class="fc-cart-total">200 р.</span>
+								</td>
+							</tr>
+					
+							<tr>
+								<td colspan="10" class="text-right">
+									<span class="fc-cart-total">
+										<b>Цена с учетом стоимости доставки:</b>
+									</span>
+									<span class="fc-cart-total">950 р.</span>
+								</td>
+							</tr>
+					
+							</tbody>
+					
+						</table>
+					</div>
+					
+					<hr/>					<form>
+					
+					<div class="fc-cart-checkout">
+						<div class="row">
+							<div class="col-sm-12 col-md-6">
+						
+								<div class="panel panel-default">
+									<div class="panel-heading"><b>Покупатель</b></div>
+									<div class="panel-body">
+										<div class="col-xs-12">
+											<div class="fc-cart-checkout-form">
+												<fieldset class="form-horizontal">
+													<div class="form-group required">
+														<label class="control-label" for="customer_firstname">Имя</label>
+														<input class="form-control" id="customer_firstname" type="text" required>
+													</div>
+													<div class="form-group required">
+														<label class="control-label" for="customer_lastname">Фамилия</label>
+														<input class="form-control" id="customer_lastname" type="text" required>
+													</div>
+													<div class="form-group required">
+														<label class="control-label" for="customer_email">Email</label>
+														<input class="form-control" id="customer_email" type="email" required>
+													</div>
+												</fieldset>
+											</div>
+										</div>
+									</div>
+								</div>
+					
+					
+								<div class="panel panel-default">
+									<div class="panel-heading"><b>Способ доставки</b></div>
+									<div class="panel-body">
+										<div class="col-xs-12">
+											<div class="radio">
+												<label for="pochta-rossii">
+													<input id="pochta-rossii" name="shipping-method" checked type="radio"> Почта России
+												</label>
+											</div>
+											<div class="radio">
+												<label for="sdek">
+													<input id="sdek" name="shipping-method" type="radio"> СДЭК
+												</label>
+											</div>
+											<div class="radio">
+												<label for="samovyvoz">
+													<input id="samovyvoz" name="shipping-method" type="radio"> Самовывоз
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+						
+							<div class="col-sm-12 col-md-6">
+						
+								<div class="panel panel-default">
+									<div class="panel-heading"><b>Адрес доставки</b></div>
+									<div class="panel-body">
+										<div class="col-xs-12">
+											<div class="fc-cart-checkout-form">
+												<fieldset class="form-horizontal">
+													<div class="form-group required">
+														<label class="control-label">Страна</label>
+														<input class="form-control" type="text" required>
+													</div>
+													<div class="form-group required">
+														<label class="control-label">Регион</label>
+														<input class="form-control" type="text" required>
+													</div>
+													<div class="form-group required">
+														<label class="control-label">Город</label>
+														<input class="form-control" type="text" required>
+													</div>
+													<div class="form-group required">
+														<label class="control-label">Индекс</label>
+														<input class="form-control" type="text" required pattern="\d+">
+													</div>
+												</fieldset>
 												<div class="row">
-													<div class="form-group col-md-6">
-														<label class="control-label">Улица</label>
-														<input class="form-control" type="text">
-													</div>
-													<div class="form-group col-md-3">
-														<label class="control-label">Дом</label>
-														<input class="form-control" type="text">
-													</div>
-													<div class="form-group col-md-3">
-														<label class="control-label">Квартира</label>
-														<input class="form-control" type="text">
+													<div class="row">
+														<div class="form-group col-md-6">
+															<label class="control-label">Улица</label>
+															<input class="form-control" type="text">
+														</div>
+														<div class="form-group col-md-3">
+															<label class="control-label">Дом</label>
+															<input class="form-control" type="text">
+														</div>
+														<div class="form-group col-md-3">
+															<label class="control-label">Квартира</label>
+															<input class="form-control" type="text">
+														</div>
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-				
-							<div class="panel panel-default">
-								<div class="panel-heading"><b>Комментарий</b></div>
-								<div class="panel-body">
-									<div class="col-xs-12">
-										<div class="fc-cart-checkout-form">
-											<fieldset class="form-horizontal">
-												<div class="form-group">
-													<textarea class="form-control fc-cart-comment" rows="4" id="customer_comment" type="text"></textarea>
-												</div>
-											</fieldset>
+					
+								<div class="panel panel-default">
+									<div class="panel-heading"><b>Комментарий</b></div>
+									<div class="panel-body">
+										<div class="col-xs-12">
+											<div class="fc-cart-checkout-form">
+												<fieldset class="form-horizontal">
+													<div class="form-group">
+														<textarea class="form-control fc-cart-comment" rows="4" id="customer_comment" type="text"></textarea>
+													</div>
+												</fieldset>
+											</div>
 										</div>
 									</div>
 								</div>
+						
 							</div>
 					
-						</div>
-				
-						<div class="col-xs-12">
-							<div class="fc-cart-checkout-btn text-right">
-								<button type="submit" class="btn btn-primary btn-lg fc-button">
-									Оформить заказ
-								</button>
+							<div class="col-xs-12">
+								<div class="fc-cart-checkout-btn text-right">
+									<button type="submit" class="btn btn-primary btn-lg fc-button">
+										Оформить заказ
+									</button>
+								</div>
 							</div>
+							
 						</div>
-						
 					</div>
+					
+					</form>
+					
 				</div>
-				
-				</form>
-				
-				
+				<div id="fc-cart-empty" style="display: none;">
+					<p>Корзина пуста</p>
+				</div>
 			</div>
 		</div>
 

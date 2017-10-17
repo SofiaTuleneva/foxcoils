@@ -18,10 +18,13 @@
 
 		<div class="row">
 			<div class="col-sm-12">
-				
-				{{>cart-products}}
-				{{>cart-checkout}}
-				
+				<div id="fc-cart">
+					{{>cart-products}}
+					{{>cart-checkout}}
+				</div>
+				<div id="fc-cart-empty" style="display: none;">
+					<p>Корзина пуста</p>
+				</div>
 			</div>
 		</div>
 
