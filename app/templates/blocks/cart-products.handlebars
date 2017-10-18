@@ -21,7 +21,7 @@
 
 		<tbody>
 
-		<tr>
+		<tr class="fc-cart-item">
 			<td class="image">
 				<a href="http://foxcoils.ru/fused-clapton-coil-ss.html">
 					<img src="http://foxcoils.ru/images/catalog/fused-clapton-coil/gallery/fused-clapton-coil-69x69.jpg" alt="Fused Clapton Coil SS" title="Fused Clapton Coil SS">
@@ -39,41 +39,49 @@
 			<td class="quantity">
 				<div class="row">
 					<div class="col-xs-3">
-						<input type="text" value="1" class="form-control fc-cart-qty" data-item_id="8">
+						<input type="text" value="2" class="form-control fc-cart-qty" id="fc-cart-qty" data-item_id="1">
 					</div>
 				</div>
 			</td>
-			<td class="price">250 р.</td>
-			<td class="total">250 р.</td>
+			<td class="price">250 руб.</td>
+			<td class="total">
+				<span class="fc-item-total" data-item_price="250"></span> руб.
+			</td>
 			<td class="remove">
-				<a class="fc-cart-remove" data-item_id="8"><i class="fa fa-remove"></i></a>
+				<a class="fc-cart-remove" data-item_id="1"><i class="fa fa-remove"></i></a>
 			</td>
 		</tr>
 
 		<tr>
 			<td colspan="10" class="text-right">
-				<span class="fc-cart-total">
-					<b>Итого:</b>
-				</span>
-				<span class="fc-cart-total">750 р.</span>
+			  <span class="fc-cart-footer-td">
+				<b>Итого:</b>
+			  </span>
+				<span class="fc-cart-footer-td">
+				<span id="fc-cart-total"></span> руб.
+			  </span>
 			</td>
 		</tr>
 
 		<tr>
 			<td colspan="10" class="text-right">
-				<span class="fc-cart-total">
-					<b>Стоимость доставки:</b>
-				</span>
-				<span class="fc-cart-total">200 р.</span>
+			  <span class="fc-cart-footer-td">
+				<b>Стоимость доставки:</b>
+			  </span>
+				<span class="fc-cart-footer-td">
+				<span id="fc-cart-shipping">100</span> руб.
+			  </span>
 			</td>
 		</tr>
 
 		<tr>
 			<td colspan="10" class="text-right">
-				<span class="fc-cart-total">
-					<b>Цена с учетом стоимости доставки:</b>
-				</span>
-				<span class="fc-cart-total">950 р.</span>
+			  <span class="fc-cart-footer-td">
+				<b>Итого с учетом доставки:</b>
+			  </span>
+				<span class="fc-cart-footer-td">
+				<span id="fc-cart-total-with-shipping">0</span> руб.
+			  </span>
 			</td>
 		</tr>
 

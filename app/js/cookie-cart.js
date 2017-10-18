@@ -1,131 +1,83 @@
 function setCookie(cname, cvalue, exdays) {
-	var d = new Date();
+	let d = new Date();
 	d.setTime(d.getTime() + (exdays*24*60*60*1000));
-	var expires = "expires="+ d.toUTCString();
+	let expires = "expires="+ d.toUTCString();
 	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
 function getCookie(cname) {
-	var name = cname + "=";
-	var decodedCookie = decodeURIComponent(document.cookie);
-	var ca = decodedCookie.split(';');
-	for(var i = 0; i <ca.length; i++) {
-		var c = ca[i];
-		while (c.charAt(0) == ' ') {
+	let name = cname + "=";
+	let decodedCookie = decodeURIComponent(document.cookie);
+	let ca = decodedCookie.split(';');
+	for(let i = 0; i <ca.length; i++) {
+		let c = ca[i];
+		while (c.charAt(0) === ' ') {
 			c = c.substring(1);
 		}
-		if (c.indexOf(name) == 0) {
+		if (c.indexOf(name) === 0) {
 			return c.substring(name.length, c.length);
 		}
 	}
 	return "";
 }
 
-function addProductToCart (id, inputQty) {
-	let qty = +inputQty;
-
-	let setProductsCookie = function () {
-		let products = JSON.parse(getCookie('cart'));
-		if (products.length !== 0) {
-			let isTheSameProduct = false;
-			products.forEach(function(item) {
-				if (item.id === id) {
-					item.qty += qty;
-					isTheSameProduct = true;
-				}
-			});
-			if (!isTheSameProduct) {
-				products.push({id: id, qty: qty});
-			}
-		} else {
-			products.push({id: id, qty: qty});
-		}
-		setCookie('cart', JSON.stringify(products));
-		console.log(document.cookie);
-	};
-
-	if (getCookie("cart") !== "") {
-		setProductsCookie();
-	} else {
-		setCookie('cart', JSON.stringify([]));
-		setProductsCookie();
-	}
-
-	showCartTotalQty();
+function setCart(cvalue) {
+	setCookie('cart', JSON.stringify(cvalue));
 }
 
-
-
-
-function addProductToCart2 (id, inputQty) {
-	let qty = +inputQty;
-
-	let setProductsCookie = function () {
-		let products = JSON.parse(getCookie('cart'));
-		if (products.length !== 0) {
-			let isTheSameProduct = false;
-			products.forEach(function(item) {
-				if (item.id === id) {
-					item.qty += qty;
-					isTheSameProduct = true;
-				}
-			});
-			if (!isTheSameProduct) {
-				products.push({id: id, qty: qty});
-			}
-		} else {
-			products.push({id: id, qty: qty});
-		}
-		setCookie('cart', JSON.stringify(products));
-		console.log(document.cookie);
-	};
-
-	if (getCookie("cart") !== "") {
-		setProductsCookie();
-	} else {
-		setCookie('cart', JSON.stringify([]));
-		setProductsCookie();
-	}
-
-	showCartTotalQty();
+function getCart() {
+	return JSON.parse(getCookie('cart'));
 }
 
-
-
-
-
-
+function addCartItem (id, qty) {
+	let products = getCart();
+	let addedToCart = false;
+	products.forEach(function(item) {
+		if (item.id === id) {
+			item.qty += qty;
+			addedToCart = true;
+		}
+	});
+	if (!addedToCart) {
+		products.push({id: id, qty: qty});
+	}
+	setCart(products);
+	console.log(document.cookie);
+}
 
 function updateCartItem (id, qty) {
-	let products = JSON.parse(getCookie('cart'));
-	if (products.length !== 0) {
-		let indexToUpdate;
-		products.forEach(function(item, index) {
-			if (item.id === id) {
-				indexToUpdate = index;
-			}
-		});
-		if (qty === 'remove') {
-			products.splice(indexToUpdate, 1);
-			if (products.length === 0) {
-				$('#fc-cart').empty();
-				$('#fc-cart-empty').show();
-			}
-		} else {
-			if (Number.isInteger(qty) && qty > 0) {
-				products[indexToUpdate] = {id: id, qty: qty};
-			}
+	let products = getCart();
+	let indexToUpdate;
+	products.forEach(function(item, index) {
+		if (item.id === id) {
+			indexToUpdate = index;
 		}
-		indexToUpdate = undefined;
-		setCookie('cart', JSON.stringify(products));
-		console.log(document.cookie);
-		showCartTotalQty();
+	});
+	products[indexToUpdate].qty = qty;
+	setCart(products);
+	console.log(document.cookie);
+}
+
+function removeCartItem (id) {
+	let products = getCart();
+	let indexToUpdate;
+	products.forEach(function(item, index) {
+		if (item.id === id) {
+			indexToUpdate = index;
+		}
+	});
+	products.splice(indexToUpdate, 1);
+	setCart(products);
+	if (products.length === 0) {
+		$('#fc-cart').empty();
+		$('#fc-cart-empty').show();
 	}
+	console.log(document.cookie);
 }
 
 function getCartTotalQty () {
 	if (getCookie("cart") !== "") {
-		let products = JSON.parse(getCookie('cart'));
+		let products = getCart();
 		let totalQty = 0;
 		products.forEach(function(item) {
 			totalQty += item.qty;
@@ -136,39 +88,67 @@ function getCartTotalQty () {
 	}
 }
 
-function showCartTotalQty () {
+function showHeaderCartTotalQty () {
 	$('#cart-total-qty').html(getCartTotalQty());
+}
+
+function updateCartTotals() {
+	let totalPrice = 0;
+	$('.fc-item-total').each(function () {
+		let qty = +$(this).parents('.fc-cart-item').find('.fc-cart-qty').first().val();
+		let price = +$(this).attr('data-item_price');
+		// item total
+		$(this).html(qty * price);
+		totalPrice += +$(this).html();
+	});
+	let shippingPrice = +$('#fc-cart-shipping').html();
+	// total
+	$('#fc-cart-total').html(totalPrice);
+	// total with shipping
+	$('#fc-cart-total-with-shipping').html(totalPrice + shippingPrice);
 }
 
 $(document).ready(function () {
 
+	if (getCookie('cart') === "") {
+		setCart([]);
+	}
+
+	// add to cart
 	$('#add-to-cart-btn').click(function () {
 		let id = +$(this).attr('data-item_id');
 		let qty = +$('#cart-product-qty').val();
-
 		if (Number.isInteger(qty) && qty > 0) {
-			addProductToCart(id, qty);
+			addCartItem(id, qty);
 		}
+		$('#cart-product-qty').val('1');
+		showHeaderCartTotalQty();
 	});
 
+	// remove item
 	$('.fc-cart-remove').click(function () {
 		let id = +$(this).attr('data-item_id');
-		updateCartItem(id, 'remove');
-		$(this).closest('tr').remove();
+		removeCartItem(id);
+		$(this).closest('.fc-cart-item').remove();
+		updateCartTotals();
+		showHeaderCartTotalQty();
 	});
 
+	// update item qty
 	$('.fc-cart-qty').change(function () {
 		let id = +$(this).attr('data-item_id');
 		let qty = +$(this).val();
-
 		if (Number.isInteger(qty) && qty > 0) {
 			updateCartItem(id, qty);
 		} else {
-			$(this).val('1');
+			$(this).val(1);
 			updateCartItem(id, 1);
 		}
+		updateCartTotals();
+		showHeaderCartTotalQty();
 	});
 
 	console.log(document.cookie);
-	showCartTotalQty();
+	updateCartTotals();
+	showHeaderCartTotalQty();
 });
