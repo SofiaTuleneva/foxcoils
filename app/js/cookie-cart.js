@@ -123,18 +123,30 @@ $(document).ready(function () {
 	$('#add-to-cart-btn').click(function () {
 		let product = +$(this).attr('data-item_id');
 		let qty = +$('#cart-product-qty').val();
+
+		// check options
 		let options = {};
+		let allOptionsSelected = true;
 		$('.fc-cart-option').each(function () {
 			let name = $(this).attr('data-option_id');
-			options[name] = $(this).val();
+			let val = +$(this).val();
+			if (val > 0) {
+				options[name] = val;
+			} else  {
+				allOptionsSelected = false;
+			}
 		});
-		let id = product;
-		for (let key in options) {
-			id += ('_' + options[key]);
+
+		if (allOptionsSelected) {
+			let id = product;
+			for (let key in options) {
+				id += ('_' + options[key]);
+			}
+			if (Number.isInteger(qty) && qty > 0) {
+				addCartItem(id, product, qty, options);
+			}
 		}
-		if (Number.isInteger(qty) && qty > 0) {
-			addCartItem(id, product, qty, options);
-		}
+
 		// clear add form
 		$('#cart-product-qty').val('1');
 		showHeaderCartTotalQty();
