@@ -1,137 +1,90 @@
-<script>
-	getItemTotalPrice()
-</script>
 
-<script>
-	function setCookie(cname, cvalue, exdays) {
-		var d = new Date();
-		d.setTime(d.getTime() + (exdays*24*60*60*1000));
-		var expires = "expires="+ d.toUTCString();
-		document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-	}
 
-	function getCookie(cname) {
-		var name = cname + "=";
-		var decodedCookie = decodeURIComponent(document.cookie);
-		var ca = decodedCookie.split(';');
-		for(var i = 0; i <ca.length; i++) {
-			var c = ca[i];
-			while (c.charAt(0) == ' ') {
-				c = c.substring(1);
-			}
-			if (c.indexOf(name) == 0) {
-				return c.substring(name.length, c.length);
-			}
-		}
-		return "";
-	}
 
-	function addProductToCart (id, inputQty) {
-		let qty = +inputQty;
-		let setProductsCookie = function () {
-			let products = JSON.parse(getCookie('cart'));
-			if (products.length !== 0) {
-				let isTheSameProduct = false;
-				products.forEach(function(item) {
-					if (item.id === id) {
-						item.qty += qty;
-						isTheSameProduct = true;
-					}
-				});
-				if (!isTheSameProduct) {
-					products.push({id: id, qty: qty});
-				}
-			} else {
-				products.push({id: id, qty: qty});
-			}
-			setCookie('cart', JSON.stringify(products));
-			console.log(document.cookie);
-		};
-		if (getCookie("cart") !== "") {
-			setProductsCookie();
-		} else {
-			setCookie('cart', JSON.stringify([]));
-			setProductsCookie();
-		}
-		showCartTotalQty();
-	}
+[[!getResources?
+&parents=`10,11`
+&tpl=`cart-item`
+&includeTVs=`1`
+&where=`{"id:IN":[[!getCart]]}`
+]]
 
-	function updateCartItem (id, qty) {
-		let products = JSON.parse(getCookie('cart'));
-		if (products.length !== 0) {
-			let indexToUpdate;
-			products.forEach(function(item, index) {
-				if (item.id === id) {
-					indexToUpdate = index;
-				}
-			});
-			if (qty === 'remove') {
-				products.splice(indexToUpdate, 1);
-				if (products.length === 0) {
-					$('#fc-cart').empty();
-					$('#fc-cart-empty').show();
-				}
-			} else {
-				if (Number.isInteger(qty) && qty > 0) {
-					products[indexToUpdate] = {id: id, qty: qty};
-				}
-			}
-			indexToUpdate = undefined;
-			setCookie('cart', JSON.stringify(products));
-			console.log(document.cookie);
-			showCartTotalQty();
-		}
-	}
 
-	function getCartTotalQty () {
-		if (getCookie("cart") !== "") {
-			let products = JSON.parse(getCookie('cart'));
-			let totalQty = 0;
-			products.forEach(function(item) {
-				totalQty += item.qty;
-			});
-			return totalQty;
-		} else {
-			return 0;
-		}
-	}
+[[!getResources?
+&resources=`[[!getCart]]`
+&tpl=`cart-item`
+&includeTVs=`1`
+]]
 
-	function showCartTotalQty () {
-		$('#cart-total-qty').html(getCartTotalQty());
-	}
 
-	$(document).ready(function () {
 
-		$('#add-to-cart-btn').click(function () {
-			let id = +$(this).attr('data-item_id');
-			let qty = +$('#cart-product-qty').val();
+$cart_all = json_decode($_COOKIE['cart'], true);
+$cartIds = [];
 
-			if (Number.isInteger(qty) && qty > 0) {
-				addProductToCart(id, qty);
-			}
-		});
+foreach ($cart_all as $i => $val) {
+$cartIds[] = $val['id'];
+}
 
-		$('.fc-cart-remove').click(function () {
-			let id = +$(this).attr('data-item_id');
-			updateCartItem(id, 'remove');
-			$(this).closest('tr').remove();
-		});
+return implode(',', $cartIds);
 
-		$('.fc-cart-qty').change(function () {
-			let id = +$(this).attr('data-item_id');
-			let qty = +$(this).val();
 
-			if (Number.isInteger(qty) && qty > 0) {
-				updateCartItem(id, qty);
-			} else {
-				$(this).val('1');
-				updateCartItem(id, 1);
-			}
-		});
 
-		console.log(document.cookie);
-		showCartTotalQty();
-	});
-	//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvb2tpZS1jYXJ0LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSIsImZpbGUiOiJteXNjcmlwdHMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJmdW5jdGlvbiBzZXRDb29raWUoY25hbWUsIGN2YWx1ZSwgZXhkYXlzKSB7XHJcblx0dmFyIGQgPSBuZXcgRGF0ZSgpO1xyXG5cdGQuc2V0VGltZShkLmdldFRpbWUoKSArIChleGRheXMqMjQqNjAqNjAqMTAwMCkpO1xyXG5cdHZhciBleHBpcmVzID0gXCJleHBpcmVzPVwiKyBkLnRvVVRDU3RyaW5nKCk7XHJcblx0ZG9jdW1lbnQuY29va2llID0gY25hbWUgKyBcIj1cIiArIGN2YWx1ZSArIFwiO1wiICsgZXhwaXJlcyArIFwiO3BhdGg9L1wiO1xyXG59XHJcblxyXG5mdW5jdGlvbiBnZXRDb29raWUoY25hbWUpIHtcclxuXHR2YXIgbmFtZSA9IGNuYW1lICsgXCI9XCI7XHJcblx0dmFyIGRlY29kZWRDb29raWUgPSBkZWNvZGVVUklDb21wb25lbnQoZG9jdW1lbnQuY29va2llKTtcclxuXHR2YXIgY2EgPSBkZWNvZGVkQ29va2llLnNwbGl0KCc7Jyk7XHJcblx0Zm9yKHZhciBpID0gMDsgaSA8Y2EubGVuZ3RoOyBpKyspIHtcclxuXHRcdHZhciBjID0gY2FbaV07XHJcblx0XHR3aGlsZSAoYy5jaGFyQXQoMCkgPT0gJyAnKSB7XHJcblx0XHRcdGMgPSBjLnN1YnN0cmluZygxKTtcclxuXHRcdH1cclxuXHRcdGlmIChjLmluZGV4T2YobmFtZSkgPT0gMCkge1xyXG5cdFx0XHRyZXR1cm4gYy5zdWJzdHJpbmcobmFtZS5sZW5ndGgsIGMubGVuZ3RoKTtcclxuXHRcdH1cclxuXHR9XHJcblx0cmV0dXJuIFwiXCI7XHJcbn1cclxuXHJcbmZ1bmN0aW9uIGFkZFByb2R1Y3RUb0NhcnQgKGlkLCBpbnB1dFF0eSkge1xyXG5cdGxldCBxdHkgPSAraW5wdXRRdHk7XHJcblx0bGV0IHNldFByb2R1Y3RzQ29va2llID0gZnVuY3Rpb24gKCkge1xyXG5cdFx0bGV0IHByb2R1Y3RzID0gSlNPTi5wYXJzZShnZXRDb29raWUoJ2NhcnQnKSk7XHJcblx0XHRpZiAocHJvZHVjdHMubGVuZ3RoICE9PSAwKSB7XHJcblx0XHRcdGxldCBpc1RoZVNhbWVQcm9kdWN0ID0gZmFsc2U7XHJcblx0XHRcdHByb2R1Y3RzLmZvckVhY2goZnVuY3Rpb24oaXRlbSkge1xyXG5cdFx0XHRcdGlmIChpdGVtLmlkID09PSBpZCkge1xyXG5cdFx0XHRcdFx0aXRlbS5xdHkgKz0gcXR5O1xyXG5cdFx0XHRcdFx0aXNUaGVTYW1lUHJvZHVjdCA9IHRydWU7XHJcblx0XHRcdFx0fVxyXG5cdFx0XHR9KTtcclxuXHRcdFx0aWYgKCFpc1RoZVNhbWVQcm9kdWN0KSB7XHJcblx0XHRcdFx0cHJvZHVjdHMucHVzaCh7aWQ6IGlkLCBxdHk6IHF0eX0pO1xyXG5cdFx0XHR9XHJcblx0XHR9IGVsc2Uge1xyXG5cdFx0XHRwcm9kdWN0cy5wdXNoKHtpZDogaWQsIHF0eTogcXR5fSk7XHJcblx0XHR9XHJcblx0XHRzZXRDb29raWUoJ2NhcnQnLCBKU09OLnN0cmluZ2lmeShwcm9kdWN0cykpO1xyXG5cdFx0Y29uc29sZS5sb2coZG9jdW1lbnQuY29va2llKTtcclxuXHR9O1xyXG5cdGlmIChnZXRDb29raWUoXCJjYXJ0XCIpICE9PSBcIlwiKSB7XHJcblx0XHRzZXRQcm9kdWN0c0Nvb2tpZSgpO1xyXG5cdH0gZWxzZSB7XHJcblx0XHRzZXRDb29raWUoJ2NhcnQnLCBKU09OLnN0cmluZ2lmeShbXSkpO1xyXG5cdFx0c2V0UHJvZHVjdHNDb29raWUoKTtcclxuXHR9XHJcblx0c2hvd0NhcnRUb3RhbFF0eSgpO1xyXG59XHJcblxyXG5mdW5jdGlvbiB1cGRhdGVDYXJ0SXRlbSAoaWQsIHF0eSkge1xyXG5cdGxldCBwcm9kdWN0cyA9IEpTT04ucGFyc2UoZ2V0Q29va2llKCdjYXJ0JykpO1xyXG5cdGlmIChwcm9kdWN0cy5sZW5ndGggIT09IDApIHtcclxuXHRcdGxldCBpbmRleFRvVXBkYXRlO1xyXG5cdFx0cHJvZHVjdHMuZm9yRWFjaChmdW5jdGlvbihpdGVtLCBpbmRleCkge1xyXG5cdFx0XHRpZiAoaXRlbS5pZCA9PT0gaWQpIHtcclxuXHRcdFx0XHRpbmRleFRvVXBkYXRlID0gaW5kZXg7XHJcblx0XHRcdH1cclxuXHRcdH0pO1xyXG5cdFx0aWYgKHF0eSA9PT0gJ3JlbW92ZScpIHtcclxuXHRcdFx0cHJvZHVjdHMuc3BsaWNlKGluZGV4VG9VcGRhdGUsIDEpO1xyXG5cdFx0XHRpZiAocHJvZHVjdHMubGVuZ3RoID09PSAwKSB7XHJcblx0XHRcdFx0JCgnI2ZjLWNhcnQnKS5lbXB0eSgpO1xyXG5cdFx0XHRcdCQoJyNmYy1jYXJ0LWVtcHR5Jykuc2hvdygpO1xyXG5cdFx0XHR9XHJcblx0XHR9IGVsc2Uge1xyXG5cdFx0XHRpZiAoTnVtYmVyLmlzSW50ZWdlcihxdHkpICYmIHF0eSA+IDApIHtcclxuXHRcdFx0XHRwcm9kdWN0c1tpbmRleFRvVXBkYXRlXSA9IHtpZDogaWQsIHF0eTogcXR5fTtcclxuXHRcdFx0fVxyXG5cdFx0fVxyXG5cdFx0aW5kZXhUb1VwZGF0ZSA9IHVuZGVmaW5lZDtcclxuXHRcdHNldENvb2tpZSgnY2FydCcsIEpTT04uc3RyaW5naWZ5KHByb2R1Y3RzKSk7XHJcblx0XHRjb25zb2xlLmxvZyhkb2N1bWVudC5jb29raWUpO1xyXG5cdFx0c2hvd0NhcnRUb3RhbFF0eSgpO1xyXG5cdH1cclxufVxyXG5cclxuZnVuY3Rpb24gZ2V0Q2FydFRvdGFsUXR5ICgpIHtcclxuXHRpZiAoZ2V0Q29va2llKFwiY2FydFwiKSAhPT0gXCJcIikge1xyXG5cdFx0bGV0IHByb2R1Y3RzID0gSlNPTi5wYXJzZShnZXRDb29raWUoJ2NhcnQnKSk7XHJcblx0XHRsZXQgdG90YWxRdHkgPSAwO1xyXG5cdFx0cHJvZHVjdHMuZm9yRWFjaChmdW5jdGlvbihpdGVtKSB7XHJcblx0XHRcdHRvdGFsUXR5ICs9IGl0ZW0ucXR5O1xyXG5cdFx0fSk7XHJcblx0XHRyZXR1cm4gdG90YWxRdHk7XHJcblx0fSBlbHNlIHtcclxuXHRcdHJldHVybiAwO1xyXG5cdH1cclxufVxyXG5cclxuZnVuY3Rpb24gc2hvd0NhcnRUb3RhbFF0eSAoKSB7XHJcblx0JCgnI2NhcnQtdG90YWwtcXR5JykuaHRtbChnZXRDYXJ0VG90YWxRdHkoKSk7XHJcbn1cclxuXHJcbiQoZG9jdW1lbnQpLnJlYWR5KGZ1bmN0aW9uICgpIHtcclxuXHJcblx0JCgnI2FkZC10by1jYXJ0LWJ0bicpLmNsaWNrKGZ1bmN0aW9uICgpIHtcclxuXHRcdGxldCBpZCA9ICskKHRoaXMpLmF0dHIoJ2RhdGEtaXRlbV9pZCcpO1xyXG5cdFx0bGV0IHF0eSA9ICskKCcjY2FydC1wcm9kdWN0LXF0eScpLnZhbCgpO1xyXG5cclxuXHRcdGlmIChOdW1iZXIuaXNJbnRlZ2VyKHF0eSkgJiYgcXR5ID4gMCkge1xyXG5cdFx0XHRhZGRQcm9kdWN0VG9DYXJ0KGlkLCBxdHkpO1xyXG5cdFx0fVxyXG5cdH0pO1xyXG5cclxuXHQkKCcuZmMtY2FydC1yZW1vdmUnKS5jbGljayhmdW5jdGlvbiAoKSB7XHJcblx0XHRsZXQgaWQgPSArJCh0aGlzKS5hdHRyKCdkYXRhLWl0ZW1faWQnKTtcclxuXHRcdHVwZGF0ZUNhcnRJdGVtKGlkLCAncmVtb3ZlJyk7XHJcblx0XHQkKHRoaXMpLmNsb3Nlc3QoJ3RyJykucmVtb3ZlKCk7XHJcblx0fSk7XHJcblxyXG5cdCQoJy5mYy1jYXJ0LXF0eScpLmNoYW5nZShmdW5jdGlvbiAoKSB7XHJcblx0XHRsZXQgaWQgPSArJCh0aGlzKS5hdHRyKCdkYXRhLWl0ZW1faWQnKTtcclxuXHRcdGxldCBxdHkgPSArJCh0aGlzKS52YWwoKTtcclxuXHJcblx0XHRpZiAoTnVtYmVyLmlzSW50ZWdlcihxdHkpICYmIHF0eSA+IDApIHtcclxuXHRcdFx0dXBkYXRlQ2FydEl0ZW0oaWQsIHF0eSk7XHJcblx0XHR9IGVsc2Uge1xyXG5cdFx0XHQkKHRoaXMpLnZhbCgnMScpO1xyXG5cdFx0XHR1cGRhdGVDYXJ0SXRlbShpZCwgMSk7XHJcblx0XHR9XHJcblx0fSk7XHJcblxyXG5cdGNvbnNvbGUubG9nKGRvY3VtZW50LmNvb2tpZSk7XHJcblx0c2hvd0NhcnRUb3RhbFF0eSgpO1xyXG59KTsiXX0=
 
-</script>
+
+$c = $modx->newQuery('modResource');
+$c->where(array(
+'parent:IN' => array(10,11),
+'deleted' => false,
+'hidemenu' => false,
+'published' => true,
+));
+$c->sortby('menuindex','ASC');
+$resources = $modx->getCollection('modResource',$c);
+
+
+
+
+
+
+
+
+$criteria = $modx->newQuery('modResource');
+$criteria->where(array(
+'parent' => 33,
+'arts' => 'deboer'
+));
+$docArray = $modx->getCollection('modResource',$criteria);
+
+
+
+
+
+$criteria = $modx->newQuery('modResource');
+$criteria->where(array(
+'parent' => 33,
+'arts' => 'deboer'
+));
+$docArray = $modx->getCollection('modResource',$criteria);
+
+
+
+$properties['id'] = $res->get('id');
+
+
+
+
+
+$cart_all = json_decode($_COOKIE['cart'], true);
+
+foreach ($cart_all as $i => $val) {
+$res = $modx->getObject('modResource', $val['product']);
+$all_ops = $res->getTVValue('migx-product-materials');
+
+}
+
+
+
+
+<input type="text" value="[[!getCartItemQty? &id=[[+id]]]]" data-item_id="[[+id]]" class="form-control fc-cart-qty" pattern="\d+">
+
+
+

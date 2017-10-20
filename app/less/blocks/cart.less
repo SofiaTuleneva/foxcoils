@@ -5,9 +5,15 @@
 		vertical-align: middle;
 	}
 
-	.fc-remove {
+	.fc-remove-col {
+		width: 5%;
+
+		.fc-btn-remove {
+			cursor: pointer;
+		}
+
 		.fa-remove {
-			font-size: 16px;
+			font-size: 18px;
 			color: @base-font-color;
 			opacity: 0.5;
 			.transition();
@@ -45,9 +51,12 @@
 	font-size: 12px;
 }
 
-.fc-cart-qty {
-	display: inline-block;
-	vertical-align: middle;
-	width: 80px;
-	padding: 0 10px;
+.fc-cart-qty-wr {
+	width: 60px;
+}
+
+.fc-cart-qty-col,
+.fc-cart-price-col,
+.fc-cart-total-col {
+	width: 12%;
 }

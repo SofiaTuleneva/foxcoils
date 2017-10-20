@@ -120,32 +120,39 @@
 						</ul>
 						
 						<div class="well well-sm product-info product_informationss">
-							<div class="form-group required">
-								<label class="control-label" for="input-option231">Структура:</label>
-								<select onchange="update_prices_product(50,1);" name="option[231]" id="input-option231" class="form-control">
-									<option value=""> --- Выбрать --- </option>
-									<option value="25">С1: 0.4 a1 + 0.2 n80 / 0.35Ω*
-									</option>
-									<option value="26">С2: 0,5 a1 + 0.2 n80 / 0.23Ω*
-									</option>
+							
+							<div class="form-group">
+								<label class="control-label">Материал:</label>
+								<select class="form-control" id="option-material">
+									<option> --- Выбрать --- </option>
+									<option value="1">3х0.4 а1 + 0.2 а1 | ~0.13 Ω*</option>
+									<option value="2">3х0.4 а1 + 0.15 n80 | ~0.14 Ω*</option>
 								</select>
 							</div>
-
-							<div class="form-group required">
+							<div class="form-group">
 								<label class="control-label">Оправа:</label>
-								<div id="input-option235">
-									<div class="radio">
-										<input onchange="update_prices_product(50,1);" name="option[235]" value="37" id="235_37" type="radio">
-										<label class="btn btn-default label-in-img" for="235_37"><span>2.5mm</span><i class="fa fa-check" aria-hidden="true"></i>
-										</label>
-									</div>
-									<div class="radio">
-										<input onchange="update_prices_product(50,1);" name="option[235]" value="38" id="235_38" type="radio">
-										<label class="btn btn-default label-in-img" for="235_38"><span>3.0mm</span><i class="fa fa-check" aria-hidden="true"></i>
-										</label>
-									</div>
-								</div>
+								<select class="form-control" id="option-frame">
+									<option> --- Выбрать --- </option>
+									<option value="1">2.0</option>
+									<option value="2">3.0</option>
+								</select>
 							</div>
+							
+							<!--<div class="form-group required">-->
+								<!--<label class="control-label">Оправа:</label>-->
+								<!--<div id="input-option235">-->
+									<!--<div class="radio">-->
+										<!--<input onchange="update_prices_product(50,1);" name="option[235]" value="37" id="235_37" type="radio">-->
+										<!--<label class="btn btn-default label-in-img" for="235_37"><span>2.5mm</span><i class="fa fa-check" aria-hidden="true"></i>-->
+										<!--</label>-->
+									<!--</div>-->
+									<!--<div class="radio">-->
+										<!--<input onchange="update_prices_product(50,1);" name="option[235]" value="38" id="235_38" type="radio">-->
+										<!--<label class="btn btn-default label-in-img" for="235_38"><span>3.0mm</span><i class="fa fa-check" aria-hidden="true"></i>-->
+										<!--</label>-->
+									<!--</div>-->
+								<!--</div>-->
+							<!--</div>-->
 							
 							<hr>
 
