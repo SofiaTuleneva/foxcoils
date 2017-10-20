@@ -63,22 +63,21 @@ function showHeaderCartTotalQty () {
 	$('#cart-total-qty').html(getCartTotalQty());
 }
 
-function addCartItem (id, product, qty, opt_material, opt_frame) {
+function addCartItem (id, product, qty, options) {
 	let products = getCart();
-	let addedToCart = false;
+	let existsInCart = false;
 	products.forEach(function(item) {
 		if (item.id === id) {
 			item.qty += qty;
-			addedToCart = true;
+			existsInCart = true;
 		}
 	});
-	if (!addedToCart) {
+	if (!existsInCart) {
 		products.push({
 			id: id,
 			product: product,
 			qty: qty,
-			opt_material: opt_material,
-			opt_frame: opt_frame
+			options: options
 		});
 	}
 	setCart(products);
@@ -123,20 +122,21 @@ $(document).ready(function () {
 	// add to cart
 	$('#add-to-cart-btn').click(function () {
 		let product = +$(this).attr('data-item_id');
-
-		let opt_material = +$('#option-material').val();
-		let opt_frame = +$('#option-frame').val();
-		let id = product + '_' + opt_material + '_' + opt_frame;
-
 		let qty = +$('#cart-product-qty').val();
-
-		if (Number.isInteger(qty) && qty > 0) {
-			addCartItem(id, product, qty, opt_material, opt_frame);
+		let options = {};
+		$('.fc-cart-option').each(function () {
+			let name = $(this).attr('data-option_id');
+			options[name] = $(this).val();
+		});
+		let id = product;
+		for (let key in options) {
+			id += ('_' + options[key]);
 		}
-
-		// clear form
+		if (Number.isInteger(qty) && qty > 0) {
+			addCartItem(id, product, qty, options);
+		}
+		// clear add form
 		$('#cart-product-qty').val('1');
-
 		showHeaderCartTotalQty();
 	});
 

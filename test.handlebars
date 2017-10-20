@@ -88,3 +88,11 @@ $all_ops = $res->getTVValue('migx-product-materials');
 
 
 
+
+
+$opt_material_all = json_decode($res->getTVValue('migx-product-materials'), true);
+$properties['opt_material'] = $opt_material_all[$val['options']['opt_material']-1]['materials'].' | '.$opt_material_all[$val['options']['opt_material']-1]['resistance'];
+
+
+$opt_frame_all = json_decode($res->getTVValue('migx-product-frame'), true);
+$properties['opt_frame'] = $opt_frame_all[$val['options']['opt_frame']-1]['option'];
