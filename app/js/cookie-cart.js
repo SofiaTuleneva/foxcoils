@@ -121,30 +121,38 @@ $(document).ready(function () {
 
 	// add to cart
 	$('#add-to-cart-btn').click(function () {
+		let optionsAlert = $('#product-add-options-alert');
+		optionsAlert.fadeOut();
+		$('.form-group').removeClass('has-error');
+
+
+		let emptyOptions = $('.fc-cart-option option:selected[value=0]');
+		if (emptyOptions.length > 0) {
+			emptyOptions.each(function () {
+				$(this).closest('.form-group').addClass('has-error');
+			});
+			optionsAlert.fadeIn();
+			return false;
+		}
+
+
 		let product = +$(this).attr('data-item_id');
 		let qty = +$('#cart-product-qty').val();
 
 		// check options
 		let options = {};
-		let allOptionsSelected = true;
+
 		$('.fc-cart-option').each(function () {
 			let name = $(this).attr('data-option_id');
-			let val = +$(this).val();
-			if (val > 0) {
-				options[name] = val;
-			} else  {
-				allOptionsSelected = false;
-			}
+			options[name] = +$(this).val();
 		});
 
-		if (allOptionsSelected) {
-			let id = product;
-			for (let key in options) {
-				id += ('_' + options[key]);
-			}
-			if (Number.isInteger(qty) && qty > 0) {
-				addCartItem(id, product, qty, options);
-			}
+		let id = product;
+		for (let key in options) {
+			id += ('_' + options[key]);
+		}
+		if (Number.isInteger(qty) && qty > 0) {
+			addCartItem(id, product, qty, options);
 		}
 
 		// clear add form
