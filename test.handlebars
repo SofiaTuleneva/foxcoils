@@ -1,98 +1,47 @@
+<div class="row">
 
+	<div class="fc-catalog-categories clearfix">
+		[[!getResources?
+		&parents=`5`
+		&depth=`0`
+		&tpl=`product-category-card`
+		&includeTV<div class="row">
 
+		<div class="fc-catalog-categories clearfix">
+			[[!getResources?
+			&parents=`5`
+			&depth=`0`
+			&tpl=`product-category-card`
+			&includeTVs=`1`
+			]]
+		</div>
 
-[[!getResources?
-&parents=`10,11`
-&tpl=`cart-item`
-&includeTVs=`1`
-&where=`{"id:IN":[[!getCart]]}`
-]]
+		<div class="col-xs-12">
+			<hr/>
+		</div>
 
+		<div class="fc-catalog-product-list">
+			[[!getResources?
+			&parents=`10,11`
+			&tpl=`product-card`
+			&includeTVs=`1`
+			]]
+		</div>
 
-[[!getResources?
-&resources=`[[!getCart]]`
-&tpl=`cart-item`
-&includeTVs=`1`
-]]
+	</div>s=`1`
+		]]
+	</div>
 
+	<div class="col-xs-12">
+		<hr/>
+	</div>
 
+	<div class="fc-catalog-product-list">
+		[[!getResources?
+		&parents=`10,11`
+		&tpl=`product-card`
+		&includeTVs=`1`
+		]]
+	</div>
 
-$cart_all = json_decode($_COOKIE['cart'], true);
-$cartIds = [];
-
-foreach ($cart_all as $i => $val) {
-$cartIds[] = $val['id'];
-}
-
-return implode(',', $cartIds);
-
-
-
-
-
-$c = $modx->newQuery('modResource');
-$c->where(array(
-'parent:IN' => array(10,11),
-'deleted' => false,
-'hidemenu' => false,
-'published' => true,
-));
-$c->sortby('menuindex','ASC');
-$resources = $modx->getCollection('modResource',$c);
-
-
-
-
-
-
-
-
-$criteria = $modx->newQuery('modResource');
-$criteria->where(array(
-'parent' => 33,
-'arts' => 'deboer'
-));
-$docArray = $modx->getCollection('modResource',$criteria);
-
-
-
-
-
-$criteria = $modx->newQuery('modResource');
-$criteria->where(array(
-'parent' => 33,
-'arts' => 'deboer'
-));
-$docArray = $modx->getCollection('modResource',$criteria);
-
-
-
-$properties['id'] = $res->get('id');
-
-
-
-
-
-$cart_all = json_decode($_COOKIE['cart'], true);
-
-foreach ($cart_all as $i => $val) {
-$res = $modx->getObject('modResource', $val['product']);
-$all_ops = $res->getTVValue('migx-product-materials');
-
-}
-
-
-
-
-<input type="text" value="[[!getCartItemQty? &id=[[+id]]]]" data-item_id="[[+id]]" class="form-control fc-cart-qty" pattern="\d+">
-
-
-
-
-
-$opt_material_all = json_decode($res->getTVValue('migx-product-materials'), true);
-$properties['opt_material'] = $opt_material_all[$val['options']['opt_material']-1]['materials'].' | '.$opt_material_all[$val['options']['opt_material']-1]['resistance'];
-
-
-$opt_frame_all = json_decode($res->getTVValue('migx-product-frame'), true);
-$properties['opt_frame'] = $opt_frame_all[$val['options']['opt_frame']-1]['option'];
+</div>

@@ -206,7 +206,7 @@
 									<b>Стоимость доставки:</b>
 								  </span>
 									<span class="fc-cart-footer-td">
-									<span id="fc-cart-shipping">100</span> руб.
+									<span id="fc-cart-shipping"></span> руб.
 								  </span>
 								</td>
 							</tr>
@@ -232,6 +232,29 @@
 					<div class="fc-cart-checkout">
 						<div class="row">
 							<div class="col-sm-12 col-md-6">
+					
+								<div class="panel panel-default">
+									<div class="panel-heading"><b>Способ доставки</b></div>
+									<div class="panel-body">
+										<div class="col-xs-12">
+											<div class="radio">
+												<label for="samovyvoz">
+													<input id="samovyvoz" class="fc-shipping-method" name="shipping-method" value="0" type="radio"> Самовывоз (бесплатно)
+												</label>
+											</div>
+											<div class="radio">
+												<label for="pochta-rossii">
+													<input id="pochta-rossii" class="fc-shipping-method" name="shipping-method" value="200" type="radio" checked> Почта России (200 руб.)
+												</label>
+											</div>
+											<div class="radio">
+												<label for="sdek">
+													<input id="sdek" class="fc-shipping-method" name="shipping-method" value="300" type="radio"> СДЭК
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
 						
 								<div class="panel panel-default">
 									<div class="panel-heading"><b>Покупатель</b></div>
@@ -258,28 +281,7 @@
 								</div>
 					
 					
-								<div class="panel panel-default">
-									<div class="panel-heading"><b>Способ доставки</b></div>
-									<div class="panel-body">
-										<div class="col-xs-12">
-											<div class="radio">
-												<label for="pochta-rossii">
-													<input id="pochta-rossii" name="shipping-method" checked type="radio"> Почта России
-												</label>
-											</div>
-											<div class="radio">
-												<label for="sdek">
-													<input id="sdek" name="shipping-method" type="radio"> СДЭК
-												</label>
-											</div>
-											<div class="radio">
-												<label for="samovyvoz">
-													<input id="samovyvoz" name="shipping-method" type="radio"> Самовывоз
-												</label>
-											</div>
-										</div>
-									</div>
-								</div>
+								
 								
 							</div>
 						

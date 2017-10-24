@@ -50,16 +50,9 @@
 						</div>
 					</div>
 					
-					<div class="col-sm-12 col-md-7 product_informationss">
-						
-						<ul class="list-unstyled">
-							<!--<li class="rating dotted-line">-->
-								<!--<div class="dotted-line_left"><span class="dotted-line_title">Рейтинг:</span>-->
-									<!--<div class="dotted-line_line"></div>-->
-								<!--</div>-->
-								<!--<div class="dotted-line_right"><span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span><span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span><span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span><span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span><span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span><sup><a class="adotted" onclick="$('a[href=\'#tab-review\']').trigger('click'); $('html, body').animate({ scrollTop: $('a[href=\'#tab-review\']').offset().top - 2}, 250); return false;">0 отзывов</a></sup>-->
-								<!--</div>-->
-							<!--</li>-->
+					<div class="col-sm-12 col-md-7 product_informationss" id="fc-scroll">
+
+						<ul class="list-unstyled fc-product-parameters-list">
 							<li class="dotted-line">
 								<div class="dotted-line_left"><span class="dotted-line_title">Бренд:</span>
 									<div class="dotted-line_line"></div>
@@ -67,60 +60,30 @@
 								<div class="dotted-line_right"><a href="/"><span itemprop="brand">Foxcoils</span></a>
 								</div>
 							</li>
-							<li class="hidden pr_quantity">936</li>
-
-							<li class="dotted-line" itemprop="additionalProperty" itemscope="" itemtype="http://schema.org/PropertyValue">
-								<div class="dotted-line_left"><span class="dotted-line_title" itemprop="name">Материал:</span>
+							<li class="dotted-line">
+								<div class="dotted-line_left"><span class="dotted-line_title">Количество койлов в баночке:</span>
 									<div class="dotted-line_line"></div>
 								</div>
-								<div class="dotted-line_right" itemprop="value">Фехраль + Нихром</div>
+								<div class="dotted-line_right"><span itemprop="brand">2</span>
+								</div>
 							</li>
-							<li class="dotted-line" itemprop="additionalProperty" itemscope="" itemtype="http://schema.org/PropertyValue">
-								<div class="dotted-line_left"><span class="dotted-line_title" itemprop="name">Структура:</span>
+							<li class="dotted-line">
+								<div class="dotted-line_left"><span class="dotted-line_title">Кол-во витков:</span>
 									<div class="dotted-line_line"></div>
 								</div>
-								<div class="dotted-line_right" itemprop="value">на выбор</div>
-							</li>
-							<li class="dotted-line" itemprop="additionalProperty" itemscope="" itemtype="http://schema.org/PropertyValue">
-								<div class="dotted-line_left"><span class="dotted-line_title" itemprop="name">Кол-во витков:</span>
-									<div class="dotted-line_line"></div>
+								<div class="dotted-line_right"><span itemprop="brand">4.5</span>
 								</div>
-								<div class="dotted-line_right" itemprop="value">5.5</div>
-							</li>
-							<li class="dotted-line" itemprop="additionalProperty" itemscope="" itemtype="http://schema.org/PropertyValue">
-								<div class="dotted-line_left"><span class="dotted-line_title" itemprop="name">Оправа:</span>
-									<div class="dotted-line_line"></div>
-								</div>
-								<div class="dotted-line_right" itemprop="value">на выбор</div>
-							</li>
-							<li class="dotted-line" itemprop="additionalProperty" itemscope="" itemtype="http://schema.org/PropertyValue">
-								<div class="dotted-line_left"><span class="dotted-line_title" itemprop="name">Сопротивление*:</span>
-									<div class="dotted-line_line"></div>
-								</div>
-								<div class="dotted-line_right" itemprop="value">зависит от структуры</div>
-							</li>
-							<li class="dotted-line" itemprop="additionalProperty" itemscope="" itemtype="http://schema.org/PropertyValue">
-								<div class="dotted-line_left"><span class="dotted-line_title" itemprop="name">Ширина ножки:</span>
-									<div class="dotted-line_line"></div>
-								</div>
-								<div class="dotted-line_right" itemprop="value">0.8-0.9 mm</div>
-							</li>
-							<li class="dotted-line" itemprop="additionalProperty" itemscope="" itemtype="http://schema.org/PropertyValue">
-								<div class="dotted-line_left"><span class="dotted-line_title" itemprop="name">Длина спирали:</span>
-									<div class="dotted-line_line"></div>
-								</div>
-								<div class="dotted-line_right" itemprop="value">5-6 mm</div>
-							</li>
-							<li class="dotted-line" itemprop="additionalProperty" itemscope="" itemtype="http://schema.org/PropertyValue">
-								<div class="dotted-line_left"><span class="dotted-line_title" itemprop="name">Количество койлов в баночке:</span>
-									<div class="dotted-line_line"></div>
-								</div>
-								<div class="dotted-line_right" itemprop="value">2</div>
 							</li>
 						</ul>
+						
+						<div id="alert-box" style="padding-top: 20px;">
+							<div class="alert alert-danger fc-alert-pr-det" role="alert" id="product-add-options-alert" hidden>
+								Пожалуйста, выберите опции
+							</div>
 
-						<div class="alert alert-danger" role="alert" id="product-add-options-alert" hidden>
-							Пожалуйста, выберите опции
+							<div class="alert alert-success fc-alert-pr-det" role="alert" id="product-add-alert-success" hidden>
+								Товар добавлен в корзину
+							</div>
 						</div>
 						
 						<div class="well well-sm product-info product_informationss">
@@ -142,22 +105,6 @@
 									<option value="2">3.0</option>
 								</select>
 							</div>
-							
-							<!--<div class="form-group required">-->
-								<!--<label class="control-label">Оправа:</label>-->
-								<!--<div id="input-option235">-->
-									<!--<div class="radio">-->
-										<!--<input onchange="update_prices_product(50,1);" name="option[235]" value="37" id="235_37" type="radio">-->
-										<!--<label class="btn btn-default label-in-img" for="235_37"><span>2.5mm</span><i class="fa fa-check" aria-hidden="true"></i>-->
-										<!--</label>-->
-									<!--</div>-->
-									<!--<div class="radio">-->
-										<!--<input onchange="update_prices_product(50,1);" name="option[235]" value="38" id="235_38" type="radio">-->
-										<!--<label class="btn btn-default label-in-img" for="235_38"><span>3.0mm</span><i class="fa fa-check" aria-hidden="true"></i>-->
-										<!--</label>-->
-									<!--</div>-->
-								<!--</div>-->
-							<!--</div>-->
 							
 							<hr>
 
@@ -213,6 +160,41 @@
 								<p><strong>Купить Clapton coil&nbsp;</strong>для платы вы можете в нашем интернет-магазине. Доставка по Москве и всей России.</p>
 								<p style="margin-left:0px; margin-right:0px"><span style="color:rgb(255, 255, 255)">клэптон койл,&nbsp;клэптон купить, clapton coil купить</span>
 								</p>
+								<p>Спираль представляет из себя отрезок фехраля, обмотанный более тонким нихромом. <strong>Clapton coil</strong> считается классикой парения. Он имеет маленькие канавки, которые позволяют впитывать больше жидкости, а также заметно улучшают вкус. Сейчас данную намотку ставят только туда, где не очень много места, например в баки, при этом вкус раскрывается лучше.</p>
+								<p><span style="color:#cc0000"><strong>Цена за 2 намотки.</strong></span>
+								</p>
+								<p>*Сопротивление указано в расчете на 2 койла и&nbsp;может меняться в зависимости от метода установки и погрешности омметра.</p>
+								<p><strong>Купить Clapton coil&nbsp;</strong>для платы вы можете в нашем интернет-магазине. Доставка по Москве и всей России.</p>
+								<p style="margin-left:0px; margin-right:0px"><span style="color:rgb(255, 255, 255)">клэптон койл,&nbsp;клэптон купить, clapton coil купить</span>
+								</p>
+								<p>Спираль представляет из себя отрезок фехраля, обмотанный более тонким нихромом. <strong>Clapton coil</strong> считается классикой парения. Он имеет маленькие канавки, которые позволяют впитывать больше жидкости, а также заметно улучшают вкус. Сейчас данную намотку ставят только туда, где не очень много места, например в баки, при этом вкус раскрывается лучше.</p>
+								<p><span style="color:#cc0000"><strong>Цена за 2 намотки.</strong></span>
+								</p>
+								<p>*Сопротивление указано в расчете на 2 койла и&nbsp;может меняться в зависимости от метода установки и погрешности омметра.</p>
+								<p><strong>Купить Clapton coil&nbsp;</strong>для платы вы можете в нашем интернет-магазине. Доставка по Москве и всей России.</p>
+								<p style="margin-left:0px; margin-right:0px"><span style="color:rgb(255, 255, 255)">клэптон койл,&nbsp;клэптон купить, clapton coil купить</span>
+								</p>
+								<p>Спираль представляет из себя отрезок фехраля, обмотанный более тонким нихромом. <strong>Clapton coil</strong> считается классикой парения. Он имеет маленькие канавки, которые позволяют впитывать больше жидкости, а также заметно улучшают вкус. Сейчас данную намотку ставят только туда, где не очень много места, например в баки, при этом вкус раскрывается лучше.</p>
+								<p><span style="color:#cc0000"><strong>Цена за 2 намотки.</strong></span>
+								</p>
+								<p>*Сопротивление указано в расчете на 2 койла и&nbsp;может меняться в зависимости от метода установки и погрешности омметра.</p>
+								<p><strong>Купить Clapton coil&nbsp;</strong>для платы вы можете в нашем интернет-магазине. Доставка по Москве и всей России.</p>
+								<p style="margin-left:0px; margin-right:0px"><span style="color:rgb(255, 255, 255)">клэптон койл,&nbsp;клэптон купить, clapton coil купить</span>
+								</p>
+								<p>Спираль представляет из себя отрезок фехраля, обмотанный более тонким нихромом. <strong>Clapton coil</strong> считается классикой парения. Он имеет маленькие канавки, которые позволяют впитывать больше жидкости, а также заметно улучшают вкус. Сейчас данную намотку ставят только туда, где не очень много места, например в баки, при этом вкус раскрывается лучше.</p>
+								<p><span style="color:#cc0000"><strong>Цена за 2 намотки.</strong></span>
+								</p>
+								<p>*Сопротивление указано в расчете на 2 койла и&nbsp;может меняться в зависимости от метода установки и погрешности омметра.</p>
+								<p><strong>Купить Clapton coil&nbsp;</strong>для платы вы можете в нашем интернет-магазине. Доставка по Москве и всей России.</p>
+								<p style="margin-left:0px; margin-right:0px"><span style="color:rgb(255, 255, 255)">клэптон койл,&nbsp;клэптон купить, clapton coil купить</span>
+								</p>
+								<p>Спираль представляет из себя отрезок фехраля, обмотанный более тонким нихромом. <strong>Clapton coil</strong> считается классикой парения. Он имеет маленькие канавки, которые позволяют впитывать больше жидкости, а также заметно улучшают вкус. Сейчас данную намотку ставят только туда, где не очень много места, например в баки, при этом вкус раскрывается лучше.</p>
+								<p><span style="color:#cc0000"><strong>Цена за 2 намотки.</strong></span>
+								</p>
+								<p>*Сопротивление указано в расчете на 2 койла и&nbsp;может меняться в зависимости от метода установки и погрешности омметра.</p>
+								<p><strong>Купить Clapton coil&nbsp;</strong>для платы вы можете в нашем интернет-магазине. Доставка по Москве и всей России.</p>
+								<p style="margin-left:0px; margin-right:0px"><span style="color:rgb(255, 255, 255)">клэптон койл,&nbsp;клэптон купить, clapton coil купить</span>
+								</p>
 							</div>
 							<div class="tab-pane" id="tab-extratab1">
 								<p style="line-height: 1.5;">Если Вы зарегистрированы на сайте, то необходимо перед оформлением заказа авторизоваться.&nbsp;<span style="font-weight: bold;">Зарегистрированный пользователь</span>&nbsp;нашего сайта может использовать&nbsp;<span style="font-weight: bold;">«Личный кабинет»</span>&nbsp;для&nbsp;просмотра статуса и управления заказами, а так же имеет преимущество в виде&nbsp;<span style="font-weight: bold;"><a href="https://coilslab.ru/nakopitelnaya-skidka" target="_blank" style="color: rgb(206, 0, 0);">накопительной скидки</a>.</span>
@@ -221,6 +203,13 @@
 								<p style="line-height: 1.5;">1. Если Вы уже определились с выбором товара, необходимо&nbsp;поместить покупку в корзину. Если есть опции, такие как диаметр оправы, структура намотки или количество, необходимо вначале выбрать их, а потом&nbsp;кликнуть&nbsp;<span style="font-weight: bold;">«В корзину»</span>&nbsp;на странице товара.</p>
 								<p style="line-height: 1.5;">Если сумма заказа равна или более&nbsp;<span style="font-weight: bold;">2 тыс. руб.</span>&nbsp;-&nbsp;<span style="font-weight: bold; color: rgb(206, 0, 0);">ДОСТАВКА ЗА НАШ СЧЕТ!</span>
 								</p>
+								<p style="line-height: 1.5;">Если Вы зарегистрированы на сайте, то необходимо перед оформлением заказа авторизоваться.&nbsp;<span style="font-weight: bold;">Зарегистрированный пользователь</span>&nbsp;нашего сайта может использовать&nbsp;<span style="font-weight: bold;">«Личный кабинет»</span>&nbsp;для&nbsp;просмотра статуса и управления заказами, а так же имеет преимущество в виде&nbsp;<span style="font-weight: bold;"><a href="https://coilslab.ru/nakopitelnaya-skidka" target="_blank" style="color: rgb(206, 0, 0);">накопительной скидки</a>.</span>
+									<br>
+								</p>
+								<p style="line-height: 1.5;">1. Если Вы уже определились с выбором товара, необходимо&nbsp;поместить покупку в корзину. Если есть опции, такие как диаметр оправы, структура намотки или количество, необходимо вначале выбрать их, а потом&nbsp;кликнуть&nbsp;<span style="font-weight: bold;">«В корзину»</span>&nbsp;на странице товара.</p>
+								<p style="line-height: 1.5;">Если сумма заказа равна или более&nbsp;<span style="font-weight: bold;">2 тыс. руб.</span>&nbsp;-&nbsp;<span style="font-weight: bold; color: rgb(206, 0, 0);">ДОСТАВКА ЗА НАШ СЧЕТ!</span>
+								</p>
+								
 								<p style="line-height: 1.5;">2. Следующим шагом необходимо нажать на корзину и выбрать&nbsp;<span style="font-weight: bold;">«</span><span style="font-weight: bold;">Оформить заказ</span><span style="font-weight: bold;">»</span>.&nbsp;
 									<br>- Укажите, как к вам обращаться, свой телефонный номер и адрес электронной почты. Для правильного отображение способов доставки и оплаты необходимо точно указать регион, город, индекс и адрес.
 									<br>-&nbsp;<span style="font-weight: bold;">Если Вы проживаете в Московской области, но хотите забрать товар самовывозом</span>, то необходимо в поле&nbsp;<span style="font-weight: bold;">«</span><span style="font-weight: bold;">Регион</span><span style="font-weight: bold;">»&nbsp;</span>и&nbsp;<span style="font-weight: bold;">«</span><span style="font-weight: bold;">Город</span><span style="font-weight: bold;">»&nbsp;</span>указать&nbsp;<span style="font-weight: bold;">«</span><span style="font-weight: bold;">Москва</span><span style="font-weight: bold;">».</span>
@@ -236,6 +225,7 @@
 								<p style="line-height: 1.5;">5. Получить заказ, установить наши намотки и наслаждаться вкусом)</p>
 								<p style="line-height: 1.5;">P.S. А так же&nbsp;<span style="font-weight: bold;">не забывайте оставлять отзывы</span>&nbsp;о наших намотках, они позволят новым покупателям более точно определить, какая намотка им больше всего подходит.</p>
 							</div>
+							
 							<div class="tab-pane" id="tab-review">
 								<div id="review">
 									<p>Нет отзывов об этом товаре.</p>
