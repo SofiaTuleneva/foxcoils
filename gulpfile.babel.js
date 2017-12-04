@@ -143,7 +143,9 @@ gulp.task('scripts', () => {
 		// .pipe(uglify())
 		.pipe(order([
             "jquery.min.js",
+            "jquery-ui.min.js",
             "bootstrap.min.js",
+            "form2js.js",
             "*.js"
 		]))
 		.pipe(concat('app.min.js'))
