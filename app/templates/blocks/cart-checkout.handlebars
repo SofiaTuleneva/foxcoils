@@ -1,119 +1,3 @@
-<script type="text/javascript">
-	/**
-	 * автокомплит
-	 * подтягиваем список городов ajax`ом, данные jsonp в зависмости от введённых символов
-	 */
-	$(function() {
-		$("#city").autocomplete({
-			source : function(request, response) {
-				$.ajax({
-					url : "http://api.cdek.ru/city/getListByTerm/jsonp.php?callback=?",
-					dataType : "jsonp",
-					data : {
-						q : function() {
-							return $("#city").val()
-						},
-						name_startsWith : function() {
-							return $("#city").val()
-						}
-					},
-					success : function(data) {
-						response($.map(data.geonames, function(item) {
-							return {
-								label : item.name,
-								value : item.name,
-								id : item.id,
-								regionId : item.regionId,
-								countryId : item.countryId
-							}
-						}));
-					}
-				});
-			},
-			minLength : 1,
-			select : function(event, ui) {
-				let currentCityId = +ui.item.id;
-				let currentRegionId = +ui.item.regionId;
-				let currentCountryId = +ui.item.countryId;
-			
-				let specialPriceRegions = [59, 6, 13, 55];
-				const DEFAULT_PRICE = 250;
-				const SPECIAL_PRICE = 700;
-				const ABROAD_PRICE = 1000;
-
-				let price;
-				if (currentCountryId !== 1) {
-					price = ABROAD_PRICE;
-				} else if (specialPriceRegions.indexOf(currentRegionId) !== -1) {
-					price = SPECIAL_PRICE;
-				} else {
-					price = DEFAULT_PRICE;
-				}
-
-				$('#cdekCityId').val(currentCityId);
-				$('#cdek').val(price);
-		
-				if ($('#cdek:checked').length) {
-					showShippingTotal(price);
-					updateCartTotals();
-				}
-
-				$('#city').parents('.form-group').addClass('has-success');
-			}
-		});
-
-//		/**
-//		 * ajax-запрос на сервер для получения информации по доставке
-//		 */
-//		$('#cdek').submit(function() {
-//
-//			var formData = form2js('cdek', '.', true, function(node) {
-//				if(node.id && node.id.match(/callbackTest/)) {
-//					return {
-//						name : node.id,
-//						value : node.innerHTML
-//					};
-//				}
-//			});
-//			var formDataJson = JSON.stringify(formData);
-//			// console.log(JSON.stringify(formData));
-//			document.getElementById('testArea').innerHTML = 'Отправляемые данные: <br />' + JSON.stringify(formData, null, '\t');
-//
-//			$.ajax({
-//				url : 'http://api.cdek.ru/calculator/calculate_price_by_jsonp.php',
-//				jsonp : 'callback',
-//				data : {
-//					"json" : formDataJson
-//				},
-//				type : 'GET',
-//				dataType : "jsonp",
-//				success : function(data) {
-//					console.log(data);
-//					if(data.hasOwnProperty("result")) {
-//						document.getElementById('resArea').innerHTML = 'Цена доставки: ' + data.result.price + '<br />Срок доставки: ' + data.result.deliveryPeriodMin + ' - ' + data.result.deliveryPeriodMax + 'дн. ' + '<br />Планируемая дата доставки: c ' + data.result.deliveryDateMin + ' по ' + data.result.deliveryDateMax + '<br />id тарифа, по которому произведён расчёт: ' + data.result.tariffId + '<br />';
-//						if(data.result.hasOwnProperty("cashOnDelivery")) {
-//							document.getElementById('resArea').innerHTML = document.getElementById('resArea').innerHTML + 'Ограничение оплаты наличными, от (руб): ' + data.result.cashOnDelivery;
-//						}
-//					} else {
-//						for(var key in data["error"]) {
-//							// console.log(key);
-//							// console.log(data["error"][key]);
-//							document.getElementById('resArea').innerHTML = document.getElementById('resArea').innerHTML+'Код ошибки: ' + data["error"][key].code + '<br />Текст ошибки: ' + data["error"][key].text + '<br /><br />';
-//						}
-//					}
-//				}
-//			});
-//			return false;
-//		});
-	
-	
-	});
-
-</script>
-
-
-
-
 <div class="fc-cart-checkout">
 	<div class="row">
 
@@ -134,13 +18,18 @@
 							</div>
 							<div class="radio">
 								<label for="cdek">
-									<input id="cdek" class="fc-shipping-method" name="shipping_method" data-name="СДЭК" value="-" type="radio"> СДЭК
+									<input id="cdek" class="fc-shipping-method" name="shipping_method" data-name="СДЭК" value="?" type="radio"> СДЭК <span id="cdek-price"></span>
 									<input id="cdekCityId" type="hidden">
 								</label>
 							</div>
 							<div class="radio">
 								<label for="samovyvoz">
 									<input id="samovyvoz" class="fc-shipping-method" name="shipping_method" data-name="Самовывоз (бесплатно)" value="0" type="radio"> Самовывоз (бесплатно)
+								</label>
+							</div>
+							<div class="radio">
+								<label for="abroad">
+									<input id="abroad" class="fc-shipping-method" name="shipping_method" data-name="Международная доставка" value="1000" type="radio"> Международная доставка
 								</label>
 							</div>
 						</div>
@@ -152,27 +41,25 @@
 				<div class="panel panel-default">
 					<div class="panel-heading"><b>Покупатель</b></div>
 					<div class="panel-body">
-						<div class="col-xs-12">
-							<div class="fc-cart-checkout-form">
-								<fieldset class="form-horizontal">
-									<div class="form-group required">
-										<label class="control-label" for="customer_firstname">Имя</label>
-										<input class="form-control" id="customer_firstname" type="text" required>
-									</div>
-									<div class="form-group required">
-										<label class="control-label" for="customer_lastname">Фамилия</label>
-										<input class="form-control" id="customer_lastname" type="text" required>
-									</div>
-									<div class="form-group required">
-										<label class="control-label" for="customer_email">Email</label>
-										<input class="form-control" id="customer_email" type="email" required>
-									</div>
-									<div class="form-group required">
-										<label class="control-label" for="customer_phone">Телефон</label>
-										<input class="form-control" id="customer_phone" required>
-									</div>
-								</fieldset>
-							</div>
+						<div class="fc-cart-checkout-form">
+							<fieldset>
+								<div class="form-group required">
+									<label class="control-label" for="customer_firstname">Имя</label>
+									<input class="form-control" id="customer_firstname" type="text" required>
+								</div>
+								<div class="form-group required">
+									<label class="control-label" for="customer_lastname">Фамилия</label>
+									<input class="form-control" id="customer_lastname" type="text" required>
+								</div>
+								<div class="form-group required">
+									<label class="control-label" for="customer_email">Email</label>
+									<input class="form-control" id="customer_email" type="email" required>
+								</div>
+								<div class="form-group required">
+									<label class="control-label" for="customer_phone">Телефон</label>
+									<input class="form-control" id="customer_phone" required>
+								</div>
+							</fieldset>
 						</div>
 					</div>
 				</div>
@@ -187,23 +74,28 @@
 				<div class="panel panel-default">
 					<div class="panel-heading"><b>Адрес доставки</b></div>
 					<div class="panel-body">
-						<div class="col-xs-12">
-							<div class="fc-cart-checkout-form">
-								<fieldset class="form-horizontal">
-									<div class="form-group required">
-										<label class="control-label">Город</label>
-										<input id="city" class="form-control" type="text" required>
-									</div>
-									<div class="form-group required">
-										<label class="control-label">Индекс</label>
-										<input class="form-control" type="text" required pattern="\d+">
-									</div>
-									<div class="form-group required">
-										<label class="control-label">Адрес</label>
-										<input class="form-control" type="text" required>
-									</div>
-								</fieldset>
-							</div>
+						<div id="choose-city-alert" class="alert alert-danger" style="display: none">
+							Укажите ваш город
+						</div>
+						<div class="fc-cart-checkout-form">
+							<fieldset>
+								<div id="country-field" class="form-group required" style="display: none;">
+									<label class="control-label">Страна</label>
+									<input class="form-control" type="text" required>
+								</div>
+								<div class="form-group required">
+									<label class="control-label">Город</label>
+									<input id="city" class="form-control" type="text" data-selected="0" required>
+								</div>
+								<div class="form-group required">
+									<label class="control-label">Индекс</label>
+									<input class="form-control" type="text" required pattern="\d+">
+								</div>
+								<div class="form-group required">
+									<label class="control-label">Адрес</label>
+									<input class="form-control" type="text" required>
+								</div>
+							</fieldset>
 						</div>
 					</div>
 				</div>
@@ -215,14 +107,12 @@
 				<div class="panel panel-default">
 					<div class="panel-heading"><b>Комментарий</b></div>
 					<div class="panel-body">
-						<div class="col-xs-12">
-							<div class="fc-cart-checkout-form">
-								<fieldset class="form-horizontal">
-									<div class="form-group">
-										<textarea class="form-control fc-cart-comment" rows="4" id="customer_comment" type="text"></textarea>
-									</div>
-								</fieldset>
-							</div>
+						<div class="fc-cart-checkout-form">
+							<fieldset>
+								<div class="form-group">
+									<textarea class="form-control fc-cart-comment" rows="4" id="customer_comment" type="text"></textarea>
+								</div>
+							</fieldset>
 						</div>
 					</div>
 				</div>

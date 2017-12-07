@@ -209,6 +209,20 @@ $(document).ready(function () {
 	$('.fc-shipping-method').change(function () {
 		showShippingTotal($(this).val());
 		updateCartTotals();
+		$('#city').parents('.form-group').removeClass('has-error');
+		$('#choose-city-alert').hide();
+		$('#country-field').hide();
+	});
+
+	$('#cdek').change(function () {
+		if ($(this).val() === '?') {
+			$('#city').parents('.form-group').addClass('has-error');
+			$('#choose-city-alert').fadeIn();
+		}
+	});
+
+	$('#abroad').change(function () {
+		$('#country-field').fadeIn();
 	});
 
 	console.log(document.cookie);
@@ -218,3 +232,115 @@ $(document).ready(function () {
 });
 
 
+/**
+ * автокомплит
+ * подтягиваем список городов ajax`ом, данные jsonp в зависмости от введённых символов
+ */
+$(function() {
+	$("#city").autocomplete({
+		source : function(request, response) {
+			$.ajax({
+				url : "http://api.cdek.ru/city/getListByTerm/jsonp.php?callback=?",
+				dataType : "jsonp",
+				data : {
+					q : function() {
+						return $("#city").val()
+					},
+					name_startsWith : function() {
+						return $("#city").val()
+					}
+				},
+				success : function(data) {
+					response($.map(data.geonames, function(item) {
+						return {
+							label : item.name,
+							value : item.name,
+							id : item.id,
+							regionId : item.regionId,
+							countryId : item.countryId
+						}
+					}));
+				}
+			});
+		},
+		minLength : 1,
+		select : function(event, ui) {
+			$('#city').attr('data-selected', 1);
+
+			let currentCityId = +ui.item.id;
+			let currentRegionId = +ui.item.regionId;
+			let currentCountryId = +ui.item.countryId;
+
+			let specialPriceRegions = [59, 6, 13, 55];
+			const DEFAULT_PRICE = 250;
+			const SPECIAL_PRICE = 700;
+			const ABROAD_PRICE = 1000;
+
+			let price;
+			if (currentCountryId !== 1) {
+				price = ABROAD_PRICE;
+			} else if (specialPriceRegions.indexOf(currentRegionId) !== -1) {
+				price = SPECIAL_PRICE;
+			} else {
+				price = DEFAULT_PRICE;
+			}
+
+			$('#cdekCityId').val(currentCityId);
+			$('#cdek').val(price);
+
+			if ($('#cdek:checked').length) {
+				showShippingTotal(price);
+				updateCartTotals();
+			}
+
+			$('#city').parents('.form-group').removeClass('has-error');
+			$('#choose-city-alert').hide();
+		}
+	});
+
+//		/**
+//		 * ajax-запрос на сервер для получения информации по доставке
+//		 */
+//		$('#cdek').submit(function() {
+//
+//			var formData = form2js('cdek', '.', true, function(node) {
+//				if(node.id && node.id.match(/callbackTest/)) {
+//					return {
+//						name : node.id,
+//						value : node.innerHTML
+//					};
+//				}
+//			});
+//			var formDataJson = JSON.stringify(formData);
+//			// console.log(JSON.stringify(formData));
+//			document.getElementById('testArea').innerHTML = 'Отправляемые данные: <br />' + JSON.stringify(formData, null, '\t');
+//
+//			$.ajax({
+//				url : 'http://api.cdek.ru/calculator/calculate_price_by_jsonp.php',
+//				jsonp : 'callback',
+//				data : {
+//					"json" : formDataJson
+//				},
+//				type : 'GET',
+//				dataType : "jsonp",
+//				success : function(data) {
+//					console.log(data);
+//					if(data.hasOwnProperty("result")) {
+//						document.getElementById('resArea').innerHTML = 'Цена доставки: ' + data.result.price + '<br />Срок доставки: ' + data.result.deliveryPeriodMin + ' - ' + data.result.deliveryPeriodMax + 'дн. ' + '<br />Планируемая дата доставки: c ' + data.result.deliveryDateMin + ' по ' + data.result.deliveryDateMax + '<br />id тарифа, по которому произведён расчёт: ' + data.result.tariffId + '<br />';
+//						if(data.result.hasOwnProperty("cashOnDelivery")) {
+//							document.getElementById('resArea').innerHTML = document.getElementById('resArea').innerHTML + 'Ограничение оплаты наличными, от (руб): ' + data.result.cashOnDelivery;
+//						}
+//					} else {
+//						for(var key in data["error"]) {
+//							// console.log(key);
+//							// console.log(data["error"][key]);
+//							document.getElementById('resArea').innerHTML = document.getElementById('resArea').innerHTML+'Код ошибки: ' + data["error"][key].code + '<br />Текст ошибки: ' + data["error"][key].text + '<br /><br />';
+//						}
+//					}
+//				}
+//			});
+//			return false;
+//		});
+
+
+});

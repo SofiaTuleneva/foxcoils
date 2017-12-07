@@ -26,7 +26,7 @@ let params = {
 	templates: 'app/templates/**/*.handlebars',
 	less: 'app/less/**/*.less',
 	scripts: 'app/js/**/*.js',
-	myscripts: 'app/js/*.js',
+	scripts: 'app/js/*.js',
 	images: 'assets/images/**/*',
 	fonts: 'assets/fonts/**/*'
 };
@@ -51,7 +51,7 @@ gulp.task('server', () => {
     gulp.watch(params.templates, ['handlebars']);
     gulp.watch(params.less, ['less']);
     gulp.watch(params.scripts, ['scripts']);
-    gulp.watch(params.myscripts, ['myscripts']);
+    gulp.watch(params.scripts, ['scripts']);
 	gulp.watch(params.images, ['images']);
 	gulp.watch(params.fonts, ['fonts']);
 });
@@ -60,7 +60,7 @@ gulp.task('server', () => {
  * Build task
  ******************************/
 
-gulp.task('build', ['handlebars', 'less', 'images', 'scripts', 'myscripts', 'fonts']);
+gulp.task('build', ['handlebars', 'less', 'images', 'jslibs', 'scripts', 'fonts']);
 
 /******************************
  * Handlebars build
@@ -137,7 +137,7 @@ gulp.task('less', function () {
  * JS build
  ******************************/
 
-gulp.task('scripts', () => {
+gulp.task('jslibs', () => {
 	return gulp.src('app/js/libs/*.js')
 		.pipe(sourcemaps.init())
 		// .pipe(uglify())
@@ -153,10 +153,10 @@ gulp.task('scripts', () => {
 		.pipe(gulp.dest(params.out + '/js'));
 });
 
-gulp.task('myscripts', () => {
+gulp.task('scripts', () => {
 	return gulp.src('app/js/*.js')
 		.pipe(sourcemaps.init())
-		.pipe(concat('myscripts.js'))
+		.pipe(concat('scripts.js'))
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(params.out + '/js'));
 });
