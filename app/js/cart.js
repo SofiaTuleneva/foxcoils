@@ -215,9 +215,19 @@ $(document).ready(function () {
 	});
 
 	$('#cdek').change(function () {
-		if ($(this).val() === '?') {
-			$('#city').parents('.form-group').addClass('has-error');
-			$('#choose-city-alert').fadeIn();
+		if ($('#city').attr('data-selected') == 0) {
+			showCityErrorAlert();
+		}
+	});
+
+	$('#city').keyup(function () {
+		$(this).attr('data-selected', 0);
+		$('#cdek').val('?');
+
+		if ($('#cdek:checked').length) {
+			showCityErrorAlert();
+			showShippingTotal($('#cdek').val());
+			updateCartTotals();
 		}
 	});
 
@@ -231,6 +241,16 @@ $(document).ready(function () {
 	showHeaderCartTotalQty();
 });
 
+
+function showCityErrorAlert() {
+	$('#city').parents('.form-group').addClass('has-error');
+	$('#choose-city-alert').fadeIn();
+}
+
+function removeCityErrorAlert() {
+	$('#city').parents('.form-group').removeClass('has-error');
+	$('#choose-city-alert').hide();
+}
 
 /**
  * автокомплит
@@ -265,36 +285,35 @@ $(function() {
 		},
 		minLength : 1,
 		select : function(event, ui) {
-			$('#city').attr('data-selected', 1);
+			// set flag
 
-			let currentCityId = +ui.item.id;
-			let currentRegionId = +ui.item.regionId;
-			let currentCountryId = +ui.item.countryId;
+			$('#city').attr('data-selected', +ui.item.id);
+
+			removeCityErrorAlert();
+
+			// get price
 
 			let specialPriceRegions = [59, 6, 13, 55];
 			const DEFAULT_PRICE = 250;
 			const SPECIAL_PRICE = 700;
 			const ABROAD_PRICE = 1000;
-
 			let price;
-			if (currentCountryId !== 1) {
+			if (+ui.item.countryId !== 1) {
 				price = ABROAD_PRICE;
-			} else if (specialPriceRegions.indexOf(currentRegionId) !== -1) {
+			} else if (specialPriceRegions.indexOf(+ui.item.regionId) !== -1) {
 				price = SPECIAL_PRICE;
 			} else {
 				price = DEFAULT_PRICE;
 			}
 
-			$('#cdekCityId').val(currentCityId);
+			// show price
+
 			$('#cdek').val(price);
 
 			if ($('#cdek:checked').length) {
 				showShippingTotal(price);
 				updateCartTotals();
 			}
-
-			$('#city').parents('.form-group').removeClass('has-error');
-			$('#choose-city-alert').hide();
 		}
 	});
 
