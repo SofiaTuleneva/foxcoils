@@ -1,7 +1,3 @@
 /.idea/
 /node_modules/
-/bower_components/
-original.css
-/original.html
-/modx-backup.html
-/modx-backup-2.tpl
+/other/

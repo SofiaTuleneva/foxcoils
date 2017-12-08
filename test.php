@@ -1,89 +1,44 @@
 <?php
-// get customer form
-$fields = [
-    'shipping_method',
-    'customer_firstname',
-    'customer_lastname',
-    'customer_phone',
-    'customer_email',
-    'customer_country',
-    'customer_city',
-    'customer_postcode',
-    'customer_address',
-    'customer_comment'
-];
+$date = date('Y-m-d H:i:s');
+$year = date('Y');
 
-$properties = array();
-foreach ($fields as $field) {
-    $properties[$field] = htmlspecialchars($_POST[$field]);
-}
-
-// *** redirect error
-if (!filter_var($properties['customer_email'], FILTER_VALIDATE_EMAIL)) {
-    $resource = $modx->getObject('modResource', 130);
-    $location = $resource->get('alias');
-    header("Location: {$location}.html");
-    return;
-}
-
-
-
-// get cart
-$cart_all = json_decode($_COOKIE['cart'], true);
-
-// *** redirect error
-if (empty($cart_all)) {
-    $resource = $modx->getObject('modResource', 130);
-    $location = $resource->get('alias');
-    header("Location: {$location}.html");
-    return;
-}
-
-$cartTotal = 0;
-foreach ($cart_all as $i => $val) {
-    $resource = $modx->getObject('modResource', $val['product']);
-    $itemTotal =  $resource->getTVValue('price') * $val['qty'];
-    $cartTotal += $itemTotal;
-}
-
-$properties['cart-total'] = $cartTotal;
-$properties['cart-shipping'] = $properties['shipping_method'];
-$properties['cart-total-with-shipping'] = $properties['cart-total'] + $properties['cart-shipping'];
-$properties['cart_items'] = $modx->runSnippet('getCartItemsTpl', array(
-    'tpl' => 'cart-email-item'
+$currentYearDir = $modx->getObject('modResource', array(
+    'parent' => $ordersLogDirId,
+    'alias' => $year
 ));
 
-$properties['date'] = date('Y-m-d H:i:s');
+// Get parent directory to save order
+if ($currentYearDir) {
+    $parent = $currentYearDir->get('id');
+} else {
+    // Create new parent directory for order log by current year
+    $object = $modx->newObject('modResource');
+    $object->set('pagetitle', $year);
+    $object->set('alias', $year);
+    $object->set('parent', $ordersLogDirId);
+    $object->set('description', 'Год');
+    $object->save();
 
-// get mail template
-$messageTpl = $modx->getChunk('cart-email', $properties);
+    $parent = $object->get('id');
+}
 
-// clear cookie
-setcookie('cart', '');
+// Create new resource for order log
+$pagetitle = "Заказ ".$date;
+$alias = "order-".$date;
 
-// add order to log and get order id
-$orderId = $modx->runSnippet('createNewOrdersLogResource', array(
-    'message' => $messageTpl,
-    'ordersLogDirId' => 23
+$object = $modx->newObject('modResource');
+$object->set('pagetitle', $pagetitle);
+$object->set('alias', $alias);
+$object->set('parent', $parent);
+$object->set('description', 'Заказ');
+$object->setContent($message);
+$object->save();
+
+$id = $object->get('id');
+
+$currentYearDir = $modx->getObject('modResource', array(
+    'parent' => $ordersLogDirId,
+    'alias' => $year
 ));
 
-// *** redirect success
-$resource = $modx->getObject('modResource', 127);
-$location = $resource->get('alias');
-header("Location: {$location}.html");
-
-// get mail template
-$properties['orderId'] = $orderId;
-$messageTpl = $modx->getChunk('cart-email', $properties);
-
-// mail to admin
-$modx->runSnippet('sendMail', array(
-    'message' => $messageTpl,
-    'mailTo' => $modx->getChunk('cart-email-admin')
-));
-
-// mail to customer
-$modx->runSnippet('sendMail', array(
-    'message' => $messageTpl,
-    'mailTo' => $properties['customer_email']
-));
+return $id;
