@@ -216,28 +216,6 @@ $(document).ready(function () {
 		showHeaderCartTotalQty();
 	});
 
-	// // update item qty
-	// $('.fc-cart-qty').keyup(function () {
-	// 	let id = $(this).attr('data-item_id');
-	// 	let qty = +$(this).val();
-	// 	if (Number.isInteger(qty) && qty > 0) {
-	// 		updateCartItem(id, qty);
-	// 		updateCartTotals();
-	// 		showHeaderCartTotalQty();
-	// 	}
-	// });
-	//
-	// $('.fc-cart-qty').change(function () {
-	// 	let id = $(this).attr('data-item_id');
-	// 	let qty = +$(this).val();
-	// 	if (!Number.isInteger(qty) || qty <= 0) {
-	// 		$(this).val(1);
-	// 		updateCartItem(id, qty);
-	// 		updateCartTotals();
-	// 		showHeaderCartTotalQty();
-	// 	}
-	// });
-
 	$('.fc-shipping-method').change(function () {
 		// update cart totals
 		showShippingTotal($(this).val());
